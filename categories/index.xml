@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on Liv3P0ol</title>
+        <link>/categories/</link>
+        <description>Recent content in Categories on Liv3P0ol</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>es</language>
+        <lastBuildDate>Wed, 23 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>HackTheBox</title>
+        <link>/categories/hackthebox/</link>
+        <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/categories/hackthebox/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>PortSwigger</title>
+        <link>/categories/portswigger/</link>
+        <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/categories/portswigger/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>TryHackMe</title>
+        <link>/categories/tryhackme/</link>
+        <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/categories/tryhackme/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Example Category</title>
+        <link>/categories/example-category/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>/categories/example-category/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>
