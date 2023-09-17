@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on Liv3P0ol</title>
+        <link>/page/</link>
+        <description>Recent content in Pages on Liv3P0ol</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>es</language>
+        <lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Archives</title>
+        <link>/archives/</link>
+        <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
+        
+        <guid>/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Whoami</title>
+        <link>/whoami/</link>
+        <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
+        
+        <guid>/whoami/</guid>
+        <description>&lt;p&gt;Bienvenidos a este blog sobre Ciberseguirdad, mi nombre es Álvaro,(AkA Liv3p0ol),estudié el grado superior de ASIR y actualmente me estoy especializando en Ciberseguridad ofensiva, sobre lo que se cubrirá principalmente en este blog en el cual voy a ir subiendo resoluciones de CTF&amp;rsquo;s de diferentes platormas y algunos laboratorios.&lt;/p&gt;
+&lt;p&gt;Welcome to this blog about Cybersecurity, my name is Alvaro,(AkA Liv3p0ol), I studied the higher degree of ASIR and I am currently specializing in offensive Cybersecurity, about what will be covered mainly in this blog in which I will be uploading resolutions of CTF&amp;rsquo;s from different platforms and some laboratories.&lt;/p&gt;
+&lt;h2 id=&#34;certificaciones&#34;&gt;Certificaciones&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;eCPPTv2 -&amp;gt; en proceso(in process)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>
