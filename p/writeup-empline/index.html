@@ -246,13 +246,9 @@ Parámetro → Descripción
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
-      <ol>
-        <li><a href="#scanning">Scanning</a></li>
-        <li><a href="#enumeration">Enumeration</a></li>
-        <li><a href="#escalada">Escalada</a></li>
-      </ol>
-    </li>
+    <li><a href="#scanning">Scanning</a></li>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a></li>
   </ol>
 </nav>
         </div>
@@ -344,7 +340,7 @@ Parámetro → Descripción
     <section class="article-content">
     
     
-    <h3 id="scanning">Scanning</h3>
+    <h2 id="scanning">Scanning</h2>
 <p>Empezamos con el reconocimiento de puertos con un <code>TCP SYN Port Scan</code>.</p>
 <p><strong>Parámetro</strong> → <strong>Descripción</strong></p>
 <ul>
@@ -447,12 +443,16 @@ Parámetro → Descripción
 	
 ></p>
 <p>Al irnos moviendo por los menús vemos que si hacemos hovering sobre <strong>EMPLOYMENT</strong> vemos que nos redirecciona a job.empline.thm, por lo que vamos a añadir esto al archivo <code>/etc/hosts</code></p>
-<p><img src="/images/2.PNG"
-	
-	
-	
+<p><img src="/p/writeup-empline/images/2.PNG"
+	width="1567"
+	height="631"
+	srcset="/p/writeup-empline/images/2_hub4bf5b19e27ecfc96befc46756f019ec_542284_480x0_resize_box_3.PNG 480w, /p/writeup-empline/images/2_hub4bf5b19e27ecfc96befc46756f019ec_542284_1024x0_resize_box_3.PNG 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="596px"
 	
 ></p>
 <div class="highlight"><div class="chroma">
@@ -505,7 +505,7 @@ Parámetro → Descripción
 		data-flex-basis="602px"
 	
 ></p>
-<h3 id="enumeration">Enumeration</h3>
+<h2 id="enumeration">Enumeration</h2>
 <p>Una vez añadido al <code>/etc/hosts</code> vamos a hacer <strong>fuzzing</strong> con <code>gobuster</code> para ver si hay alguna ruta interesante en la cual podamos hacer algo.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -656,7 +656,7 @@ Parámetro → Descripción
 ></p>
 <p><a class="link" href="https://doddsecurity.com/312/xml-external-entity-injection-xxe-in-opencats-applicant-tracking-system/"  target="_blank" rel="noopener"
     >https://doddsecurity.com/312/xml-external-entity-injection-xxe-in-opencats-applicant-tracking-system/</a></p>
-<h3 id="escalada">Escalada</h3>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
 <p>El primer paso es crear un archivo .docx, en este caso lo hacemos un un script sencillo den python.</p>
 <p><img src="/p/writeup-empline/images/8.PNG"
 	width="537"
