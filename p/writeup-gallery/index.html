@@ -246,14 +246,10 @@ Parámetro → Descripción
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
-      <ol>
-        <li><a href="#scanning">Scanning</a></li>
-        <li><a href="#enumeration">Enumeration</a></li>
-        <li><a href="#explotacion">Explotacion</a></li>
-        <li><a href="#escalada">Escalada</a></li>
-      </ol>
-    </li>
+    <li><a href="#scanning">Scanning</a></li>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#explotation">Explotation</a></li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a></li>
   </ol>
 </nav>
         </div>
@@ -345,7 +341,7 @@ Parámetro → Descripción
     <section class="article-content">
     
     
-    <h3 id="scanning">Scanning</h3>
+    <h2 id="scanning">Scanning</h2>
 <p>Empezamos con el reconocimiento de puertos con un <code>TCP SYN Port Scan</code>.</p>
 <p><strong>Parámetro</strong> → <strong>Descripción</strong></p>
 <ul>
@@ -416,7 +412,7 @@ Parámetro → Descripción
 </span></span><span class="line"><span class="cl"><span class="p">|</span>_      httponly flag not <span class="nb">set</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="enumeration">Enumeration</h3>
+</div><h2 id="enumeration">Enumeration</h2>
 <p>Como podemos ver en el escaneo de <code>nmap</code> hay dos puertos abiertos, los cuales ambos son servicios webs.Si visitamos el primer servicio web veremos que se nos muestra la pagina por defecto de <strong>Apache2</strong>. Sin embargo, si visitamos el segundo servicio corriendo en el puerto 8080, vemos que nos redirije a una pagina de autenticación.</p>
 <p><img src="/p/writeup-gallery/images/1.png"
 	width="1577"
@@ -469,7 +465,7 @@ Parámetro → Descripción
 		data-flex-basis="605px"
 	
 ></p>
-<h3 id="explotacion">Explotacion</h3>
+<h2 id="explotation">Explotation</h2>
 <p>Si nos vamos moviendo por los menús de la página vemos que en el sitio de Albums hay una opción de uploads. Probamos a subir una reversell de php, en cual hay que cambiar algunos valores como la <strong>IP</strong> y el <strong>PUERTO</strong> al cual queremos que nos envie la reverse shell.</p>
 <p><a class="link" href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php"  target="_blank" rel="noopener"
     >https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php</a></p>
@@ -498,7 +494,7 @@ Parámetro → Descripción
 	
 ></p>
 <p>Nos ponemos en escucha con <code>nc</code> en el <strong>PUERTO</strong> e <strong>IP</strong> que hemos puesto en el archivo php que hemos subido a la web y obtendremos una shell.</p>
-<h3 id="escalada">Escalada</h3>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
 <p>Recibimos la shell, pero esta shell es muy inestable por lo que vamos a hacer un tratamiento de la <strong>TTY</strong> para no tener futuros problemas con la shell.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
