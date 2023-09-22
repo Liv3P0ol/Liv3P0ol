@@ -239,13 +239,9 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
-      <ol>
-        <li><a href="#scanning">Scanning</a></li>
-        <li><a href="#enumeration">Enumeration</a></li>
-        <li><a href="#privilege-escalation">Privilege Escalation</a></li>
-      </ol>
-    </li>
+    <li><a href="#scanning">Scanning</a></li>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a></li>
   </ol>
 </nav>
         </div>
@@ -329,7 +325,7 @@
     <section class="article-content">
     
     
-    <h3 id="scanning">Scanning</h3>
+    <h2 id="scanning">Scanning</h2>
 <p>Empezamos con el reconocimiento de puertos con un <code>TCP SYN Port Scan</code>.</p>
 <p><strong>Parámetro</strong> → <strong>Descripción</strong></p>
 <ul>
@@ -438,7 +434,7 @@
 </span></span><span class="line"><span class="cl">Service Info: Host: solidstate<span class="p">;</span> OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="enumeration">Enumeration</h3>
+</div><h2 id="enumeration">Enumeration</h2>
 <p>Antes de enumerar el puerto 4555, habría que enumerar todos los puertos anteriores. En mi caso no encontré nada.</p>
 <p>Podemos conectarnos a RSIP mediante <code>nc</code> o <code>telnet</code>, en mi caso usé <code>telnet</code>. Cuando nos intentamos conectar nos pide usuario y contraseña, probamos <strong>root:root</strong> y vemos que funciona.Una vez dentro podemos ejecutar el comando <strong>HELP</strong> para ver los comandos que podemos ejecutar.</p>
 <p>Listamos los usuarios que hay con <code>listusers</code> y vemos que hay 5 existentes.Cambiamos la contraseña a todos los usuarios para despues probar a conectarnos al servicio de correos <strong>POP3</strong> y poder ver que tiene cada no de ellos en su bandeja de entrada.Para cambiar la contraseña usamos el comando <code>setpassword &lt;usuario&gt; &lt;contraseña&gt;</code></p>
@@ -658,7 +654,7 @@
 </span></span><span class="line"><span class="cl">James
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="privilege-escalation">Privilege Escalation</h3>
+</div><h2 id="privilege-escalation">Privilege Escalation</h2>
 <p>Nos conectamos mediante <code>SSH</code> con el usuario Mindy y la contraseña que obtuvimos anteriormente. Una vez dentro nos vamos a dar cuenta de que hay comando que no vamos a poder ejecutar, esto se trata porque nos encontramos bajo una <strong>restricted bash</strong> . Aun así somo capaces de visualizar la flag de <strong>user.txt</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
